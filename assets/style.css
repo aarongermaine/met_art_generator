@@ -1,0 +1,45 @@
+ html {
+    height: 100%;
+    background-color: lightgoldenrodyellow;
+  }
+
+  .header {
+      text-align: center;
+      font-size: 25px;
+      background-color:darkgray;
+      color: darkred;
+      padding: 50px;
+      border-bottom: darkred;
+      border-style: solid;
+  }
+  
+  
+  /* .columns {
+    background-color: bisque;
+    padding: 50px;
+    margin: 5px;
+    border: tan;
+    border-style: solid;
+  } */
+
+  .searchColumn {
+    background-color: darkgray;
+    padding: 50px;
+    margin: 5px;
+    border: darkred;
+    border-style: solid; 
+  }
+
+  .displayColumn {
+    background-color: darkgray;
+    padding: 50px;
+    margin: 5px;
+    border: darkred;
+    border-style: solid;
+  }
+
+  .mapLink {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+  }
