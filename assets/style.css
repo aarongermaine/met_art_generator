@@ -10,12 +10,15 @@
   .header {
       background-image: url("./pictures/stoneTexture.jpg"); 
       text-align: center;
-      font-size: 50px;
+      font-size: 65px;
+      font-family: "MetSerif","Georgia","Times New Roman",Times,serif;
       background-color:darkgray;
       color: white;
       padding: 40px;
       border-bottom: darkslategrey;
       border-style: solid;
+      text-shadow: 2px 2px rgb(12, 12, 12);
+      letter-spacing: 4px;
   }
 
   .searchColumn {
@@ -31,8 +34,8 @@
     background-image: url("./pictures/old-cement-wall-texture_1149-1280.jpg");
     padding: 50px;
     margin: 5px;
-    border: darkslategrey;
-    border-style: solid;
+    /* border: darkslategrey; */
+    /* border-style: solid; */
   }
 
   .mapLink {
@@ -48,6 +51,6 @@
   .infoCard {
     position: absolute;
     right: 100px;
-    bottom: -100px;
+    bottom: -150px;
     margin: 10px;
   }
