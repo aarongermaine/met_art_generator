@@ -79,7 +79,34 @@ function getDetails() {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            //console.log(data);
+            displayResults(data);
         })
         .catch(error => console.log('error', error));
+};
+
+function displayResults(data) {
+    //console.log(data);
+
+    var objectDate = data.objectDate;
+    console.log(objectDate);
+    //--obtained from Gallery Number - correlates to place in Museum--//
+    var locationInMuseum = data.GalleryNumber;
+    console.log(locationInMuseum);
+
+    var periodType = data.period;
+    console.log(periodType);
+    var artistName = data.artistDisplayName;
+    console.log(artistName);
+    var workTitle = data.title;
+    console.log(workTitle);
+    var rightsReproduction = data.rightsAndReproduction;
+    console.log(rightsReproduction);
+    var learnMore = data.objectWikidata_URL;
+    console.log(learnMore);
+    var imageURL = data.primaryImage;
+    console.log(imageURL);
+    var medium = data.medium;
+    console.log(medium);
+
 };
