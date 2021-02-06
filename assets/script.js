@@ -56,7 +56,19 @@ function getAPI(searchString) {
 
     //console.log("I made it!!");
     //----------------pulled from POSTMAN-----------------------//
+<<<<<<< HEAD
+    var myHeaders = new Headers();
+    myHeaders.append("Cookie", "incap_ses_208_1662004=Z3UiV0+vIj4HcA47C/fiAlnmHWAAAAAAfgqH9BiTSLl3CZM6xDP5Wg==; visid_incap_1662004=yWfsog6jQna1Q6+jh2eZPSBmG2AAAAAAQUIPAAAAAADi+cYxvBpgB+yJk2PSo8a7");
+
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+    //---additional parameter added to only return object IDs that have images (would be silly to have facts without something pretty to show)---//
+=======
     //---additional parameter added to only return object IDs that have images (would be silly to have facts without someothing pretty to show)---//
+>>>>>>> b16fc991cec4c340236416e37b63027ec610586c
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?hasImage=true&q=${searchString}`, requestOptions)
         .then(function (response) {
             return response.json();
