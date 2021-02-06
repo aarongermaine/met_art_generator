@@ -36,6 +36,11 @@ var requestOptions = {
     redirect: 'follow'
 };
 
+//use splice/
+//--add to beginning
+//-- check length
+//-- cut off at end
+//--pusyh to local storage with stringify
 
 //-----------THIS FUNCTION, when called, executes API GETS and sets values.--------------------------//
 function getAPI(searchString) {
