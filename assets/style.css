@@ -34,8 +34,8 @@
     background-image: url("./pictures/old-cement-wall-texture_1149-1280.jpg");
     padding: 50px;
     margin: 5px;
-    border: darkslategrey;
-    border-style: solid;
+    /* border: darkslategrey; */
+    /* border-style: solid; */
   }
 
   .mapLink {
@@ -51,6 +51,6 @@
   .infoCard {
     position: absolute;
     right: 100px;
-    bottom: -100px;
+    bottom: -150px;
     margin: 10px;
   }
