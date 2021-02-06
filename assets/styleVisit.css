@@ -15,10 +15,18 @@ html {
     border-style: solid;
   }
 
+  .navbar-item {
+    color: white;
+    font-size: 20px;
+  }
+
   .image {
-    padding: 20px;
-    background-image: url("./pictures/wood_texture.jpg"); 
+    padding: 10px;
     border-width: 5px;
     border-style: solid;
     border-color: black;
+  }
+
+  .museamInfo {
+    font-size: 20px;
   }
