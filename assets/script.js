@@ -36,6 +36,11 @@ var requestOptions = {
     redirect: 'follow'
 };
 
+//use splice/
+//--add to beginning
+//-- check length
+//-- cut off at end
+//--pusyh to local storage with stringify
 
 //-----------THIS FUNCTION, when called, executes API GETS and sets values.--------------------------//
 function getAPI(searchString) {
@@ -71,7 +76,6 @@ function getAPI(searchString) {
 function getDetails() {
     objectID = parseInt(localStorage.getItem("objectIDs"));
     console.log(objectID);
-    setStorage(objectID);
 
 
     //-------------COPIED FROM POSTMAN---------------------//
@@ -86,21 +90,14 @@ function getDetails() {
         .catch(error => console.log('error', error));
 };
 
-function setStorage(objectID) {
-    var objectOne = localStorage.getItem(`${searchHistory[0]}`);
-    localStorage.setItem(`${searchHistory[1]}`, objectOne);
-    localStorage.setItem(`${searchHistory[0]}`, objectID);
-}
 
 function displayResults(data) {
     //console.log(data);
-
     var objectDate = data.objectDate;
     //console.log(objectDate);
     //--obtained from Gallery Number - correlates to place in Museum--//
     var locationInMuseum = data.GalleryNumber;
     //console.log(locationInMuseum);
-
     var periodType = data.period;
     //console.log(periodType);
     var artistName = data.artistDisplayName;
@@ -115,7 +112,5 @@ function displayResults(data) {
     //console.log(imageURL);
     var medium = data.medium;
     //console.log(medium);
-
-
 
 };
