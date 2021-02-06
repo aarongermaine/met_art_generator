@@ -1,4 +1,32 @@
 html {
-    height: 100%;
-    background: darkgray;
+  height: 100%;
+  background: darkgray;
+}
+
+  body {
+    background-image: url("./pictures/whitePaper.jpg");
+  }
+
+  .navbar {
+    background-image: url("./pictures/wood_texture.jpg");
+    margin-bottom: 15px;
+    border-bottom: black;
+    border-width: 5px;
+    border-style: solid;
+  }
+
+  .navbar-item {
+    color: white;
+    font-size: 20px;
+  }
+
+  .image {
+    padding: 10px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black;
+  }
+
+  .museamInfo {
+    font-size: 20px;
   }
