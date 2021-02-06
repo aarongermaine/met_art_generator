@@ -26,6 +26,8 @@ The results are displayed on the screen
  */
 var objectIds = [];
 var objectID = 0;
+var searchHistory = ["one", "two", "three"];
+var searchCount = 0;
 var myHeaders = new Headers();
 myHeaders.append("Cookie", "incap_ses_208_1662004=wtUiUDkio3mJwBg7C/fiAsPsHWAAAAAAHxEusp5NdaZhKLNQkhNvkw==; visid_incap_1662004=yWfsog6jQna1Q6+jh2eZPSBmG2AAAAAAQUIPAAAAAADi+cYxvBpgB+yJk2PSo8a7");
 var requestOptions = {
@@ -39,6 +41,13 @@ var requestOptions = {
 function getAPI(searchString) {
     //Clearing Local Storage before the 
     localStorage.clear("objectIDs");
+
+    //setting search counter to aide local storage
+    if (searchCount < 3) {
+        searchCount++;
+    }
+
+    console.log(searchCount);
 
     //console.log("I made it!!");
     //----------------pulled from POSTMAN-----------------------//
@@ -61,6 +70,10 @@ function getAPI(searchString) {
 
 function getDetails() {
     objectID = parseInt(localStorage.getItem("objectIDs"));
+    console.log(objectID);
+    setStorage(objectID);
+
+
     //-------------COPIED FROM POSTMAN---------------------//
     // - Second Function call using the object ID obtained fromthe prior inquiry - //
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`, requestOptions)
@@ -73,19 +86,25 @@ function getDetails() {
         .catch(error => console.log('error', error));
 };
 
+function setStorage(objectID) {
+    var objectOne = localStorage.getItem(`${searchHistory[0]}`);
+    localStorage.setItem(`${searchHistory[1]}`, objectOne);
+    localStorage.setItem(`${searchHistory[0]}`, objectID);
+}
+
 function displayResults(data) {
     //console.log(data);
 
     var objectDate = data.objectDate;
-    console.log(objectDate);
+    //console.log(objectDate);
     //--obtained from Gallery Number - correlates to place in Museum--//
     var locationInMuseum = data.GalleryNumber;
-    console.log(locationInMuseum);
+    //console.log(locationInMuseum);
 
     var periodType = data.period;
-    console.log(periodType);
+    //console.log(periodType);
     var artistName = data.artistDisplayName;
-    console.log(artistName);
+    //console.log(artistName);
     var workTitle = data.title;
     //console.log(workTitle);
     var rightsReproduction = data.rightsAndReproduction;
