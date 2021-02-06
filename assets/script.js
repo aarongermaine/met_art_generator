@@ -2,6 +2,7 @@
 
 Once the page loads i enter my keyword into the search box and hit submit
 -- If no results are found a message is presented on the web page
+-- Need to determine how to to pass values outside of API or need to clear specific items in local storage and keep search history for longer. 
 
 My search is passed into the Met API search
 -- search criteria is passed into initial MET API and the object IDs are stored into an array
@@ -26,6 +27,8 @@ var objectID = 0;
 
 //-----------THIS FUNCTION, when called, executes API GETS and sets values.--------------------------//
 function getAPI(searchString) {
+    //Clearing Local Storage before the 
+    localStorage.clear("objectIDs");
 
     console.log("I made it!!");
     //----------------pulled from POSTMAN-----------------------//
