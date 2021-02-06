@@ -1,33 +1,37 @@
-body, html {
-
+ html {
   height: 100%;
   background: darkgray;
 }
 
+  body {
+    background-image: url("./pictures/old-cement-wall-texture_1149-1280.jpg");
+  }
+
   .header {
-    /* background: url(/assets/pictures/old-cement-wall-texture_1149-1280.jpg); */
-      height: 50px;
+      background-image: url("./pictures/stoneTexture.jpg"); 
       text-align: center;
-      font-size: 25px;
+      font-size: 50px;
       background-color:darkgray;
-      color: darkred;
-      padding: 50px;
-      border-bottom: darkred;
+      color: white;
+      padding: 40px;
+      border-bottom: darkslategrey;
       border-style: solid;
   }
 
   .searchColumn {
-    /* background-color: darkgray; */
+    background-image: url("./pictures/corkBoard.jpg");
+    background-color: darkgray;
     padding: 50px;
     margin: 5px;
-    border: darkred;
+    border: darkslategrey;
     border-style: solid; 
   }
 
   .displayColumn {
+    background-image: url("./pictures/old-cement-wall-texture_1149-1280.jpg");
     padding: 50px;
     margin: 5px;
-    border: darkred;
+    border: darkslategrey;
     border-style: solid;
   }
 
@@ -37,3 +41,13 @@ body, html {
     right: 10px;
   }
 
+  .is-50x50 {
+    position: relative;
+  }
+
+  .infoCard {
+    position: absolute;
+    right: 100px;
+    bottom: -100px;
+    margin: 10px;
+  }
