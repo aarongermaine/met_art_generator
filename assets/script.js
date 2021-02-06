@@ -40,7 +40,7 @@ function getAPI(searchString) {
         headers: myHeaders,
         redirect: 'follow'
     };
-    //---additional parameter added to only return object IDs that have images (would be silly to have facts without someothing pretty to show)---//
+    //---additional parameter added to only return object IDs that have images (would be silly to have facts without something pretty to show)---//
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?hasImage=true&q=${searchString}`, requestOptions)
         .then(function (response) {
             return response.json();
