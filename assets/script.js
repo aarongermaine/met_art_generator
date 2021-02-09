@@ -24,6 +24,9 @@ https://maps.metmuseum.org/galleries/fifth-ave/2/822
 The results are displayed on the screen
 
  */
+var artistEl = document.getElementsByClassName("artist");
+var searchButton = document.getElementById("search-button");
+//var searchString = "";
 var objectIds = [];
 var objectID = 0;
 var searchHistory = [];
@@ -42,29 +45,29 @@ var requestOptions = {
 //-- cut off at end
 //--pusyh to local storage with stringify
 
+searchButton.addEventListener("click", () => getAPI());
+
+
+
+
 //-----------THIS FUNCTION, when called, executes API GETS and sets values.--------------------------//
-function getAPI(searchString) {
+function getAPI() {
     //Clearing Local Storage before the 
     localStorage.clear("objectIDs");
 
+    searchString = document.getElementById("search-input").value;
+    console.log(searchString);
 
-
-    //console.log("I made it!!");
+    console.log("I made it!!");
     //----------------pulled from POSTMAN-----------------------//
-    var myHeaders = new Headers();
-    myHeaders.append("Cookie", "incap_ses_208_1662004=Z3UiV0+vIj4HcA47C/fiAlnmHWAAAAAAfgqH9BiTSLl3CZM6xDP5Wg==; visid_incap_1662004=yWfsog6jQna1Q6+jh2eZPSBmG2AAAAAAQUIPAAAAAADi+cYxvBpgB+yJk2PSo8a7");
 
-    var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
-    };
     //---additional parameter added to only return object IDs that have images (would be silly to have facts without something pretty to show)---//
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?hasImage=true&q=${searchString}`, requestOptions)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
+            console.log(data);
             objectIds = data.objectIDs;
             var choseID = Math.floor(Math.random() * objectIds.length)
             //console.log(objectIds[choseID]);
@@ -112,12 +115,14 @@ function displayResults(data) {
     console.log(data);
     var objectDate = data.objectDate;
     //console.log(objectDate);
+
     //--obtained from Gallery Number - correlates to place in Museum--//
     var locationInMuseum = data.GalleryNumber;
     //console.log(locationInMuseum);
     var periodType = data.period;
     //console.log(periodType);
     var artistName = data.artistDisplayName;
+    artistEl.textContent = artistName;
     //console.log(artistName);
     var workTitle = data.title;
     //console.log(workTitle);
