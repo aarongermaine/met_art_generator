@@ -6,3 +6,12 @@
  * once i put in my address and submit the information will be submitted through the API GET request
  * and the directions will be available for me to see.
  */
+
+L.mapquest.key = 'KEY';
+
+// 'map' refers to a <div> element with the ID map
+L.mapquest.map('map', {
+    center: [37.7749, -122.4194],
+    layers: L.mapquest.tileLayer('map'),
+    zoom: 12
+});

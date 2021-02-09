@@ -45,9 +45,8 @@ var requestOptions = {
 //-- cut off at end
 //--pusyh to local storage with stringify
 
+//-----------EVENT LISTENER TO CALL GET API FUNCTION-----------------//
 searchButton.addEventListener("click", () => getAPI());
-
-
 
 
 //-----------THIS FUNCTION, when called, executes API GETS and sets values.--------------------------//
