@@ -32,24 +32,68 @@ var objectID = 0;
 var searchHistory = [];
 var searchedTitles = [];
 var myHeaders = new Headers();
-myHeaders.append("Cookie", "incap_ses_208_1662004=wtUiUDkio3mJwBg7C/fiAsPsHWAAAAAAHxEusp5NdaZhKLNQkhNvkw==; visid_incap_1662004=yWfsog6jQna1Q6+jh2eZPSBmG2AAAAAAQUIPAAAAAADi+cYxvBpgB+yJk2PSo8a7");
+myHeaders.append(
+  "Cookie",
+  "incap_ses_208_1662004=wtUiUDkio3mJwBg7C/fiAsPsHWAAAAAAHxEusp5NdaZhKLNQkhNvkw==; visid_incap_1662004=yWfsog6jQna1Q6+jh2eZPSBmG2AAAAAAQUIPAAAAAADi+cYxvBpgB+yJk2PSo8a7"
+);
 var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow",
 };
 
-//use splice/
-//--add to beginning
-//-- check length
-//-- cut off at end
-//--pusyh to local storage with stringify
+
 
 //-----------EVENT LISTENER TO CALL GET API FUNCTION-----------------//
 searchButton.addEventListener("click", () => getAPI());
+// var mediumArray=[ ];
+// for (i=0, i < 5, i++)
+// // function artMedium () {
+//     fetch (https://collectionapi.metmuseum.org/public/collection/v1/objects?medium&) 
+//     .then() {
+//         // return response.json();
+//     })
+//     .then(function (data) {
+//         // //How do I do this 5 times?
+//         // var mediumID = Math.floor(Math.random() * data.objectIDs.length) 
+//         // var randomMedium =  data.objectID[mediumID] 
+//         // mediumArray.push(randomMedium)
+       
+//     })
 
+    //you're gonna want to loop through your someArray and populate buttons with text from the array index...
+// }
+// var cityArray=[ ];
+// for (i=0, i < 5, i++)
+// // function artCity () {
+//     fetch (https://collectionapi.metmuseum.org/public/collection/v1/objects?city&) 
+//     .then() {
+//         // return response.json();
+//     })
+//     .then(function (data) {
+//         // //How do I do this 5 times?
+//         // var cityID = Math.floor(Math.random() * data.objectIDs.length) 
+//         // var randomCity =  data.objectID[cityID] 
+//         // cityArray.push(randomCity)
+       
+//     })
+// var periodArray=[ ];
+// for (i=0, i < 5, i++)
+// // function artPeriod () {
+//     fetch (https://collectionapi.metmuseum.org/public/collection/v1/objects?period&) 
+//     .then() {
+//         // return response.json();
+//     })
+//     .then(function (data) {
+//         // //How do I do this 5 times?
+//         // var periodID = Math.floor(Math.random() * data.objectIDs.length) 
+//         // var randomPeriod =  data.objectID[periodID] 
+//         // cityArray.push(randomPeriod)
+       
+//     })
 
-//-----------THIS FUNCTION, when called, executes API GETS and sets values.--------------------------//
+//need to add button.textcontent.someArray[] to get the texts to display on the buttons
+
 function getAPI() {
     //Clearing Local Storage before the 
     localStorage.clear("objectIDs");
@@ -78,8 +122,26 @@ function getAPI() {
 };
 
 function getDetails() {
-    objectID = parseInt(localStorage.getItem("objectIDs"));
-    console.log(objectID);
+  objectID = parseInt(localStorage.getItem("objectIDs"));
+  console.log(objectID);
+
+  //-------------COPIED FROM POSTMAN---------------------//
+  // - Second Function call using the object ID obtained fromthe prior inquiry - //
+  fetch(
+    `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`,
+    requestOptions
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      displayResults(data);
+    })
+    .catch((error) => console.log("error", error));
+}
+
+
+    //with additional search parameter - add if statement to identify whether or not department ID 
 
     //-------------COPIED FROM POSTMAN---------------------//
     // - Second Function call using the object ID obtained fromthe prior inquiry - //
@@ -92,9 +154,54 @@ function getDetails() {
         })
         .catch(error => console.log('error', error));
 };
-
-
+=======
 function displayResults(data) {
+
+
+  //adding object ID to search history array so it can be searched again
+  searchHistory.unshift(objectID);
+  searchHistory.length = 3;
+  console.log(searchHistory);
+  localStorage.setItem("searchHist", searchHistory);
+
+  //adding titles to object ID array
+  searchedTitles.unshift(data.title);
+  searchedTitles.length = 3;
+  console.log(searchedTitles);
+  localStorage.setItem("titles", searchedTitles);
+
+  console.log(data);
+  var objectDate = data.objectDate;
+  //console.log(objectDate);
+  //--obtained from Gallery Number - correlates to place in Museum--//
+  var locationInMuseum = data.GalleryNumber;
+  //console.log(locationInMuseum);
+  var periodType = data.period;
+  //console.log(periodType);
+  var artistName = data.artistDisplayName;
+  //console.log(artistName);
+  var workTitle = data.title;
+  //console.log(workTitle);
+  var rightsReproduction = data.rightsAndReproduction;
+  //console.log(rightsReproduction);
+  var learnMore = data.objectWikidata_URL;
+  //console.log(learnMore);
+  var imageURL = data.primaryImage;
+  //console.log(imageURL);
+
+  var displayImage = function () {
+    image = document.getElementById("artDisplay");
+    image.src = imageURL;
+
+    console.log(image);
+  };
+
+  displayImage();
+
+  var medium = data.medium;
+  //console.log(medium);
+}
+
 
     //adding object ID to search history array so it can be searched again
     searchHistory.unshift(objectID);
@@ -134,3 +241,4 @@ function displayResults(data) {
     //console.log(medium);
 
 };
+
