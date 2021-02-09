@@ -15,12 +15,20 @@
     <div class="header">Met Art Generator</div>
     <section class="section">
       <div class="container">
-        
         <div class="columns">
           <div class="column is-one-fifth searchColumn">
-            <textarea class="textarea" placeholder="1 line of textarea" rows="1">
+            <textarea
+              class="textarea"
+              placeholder="1 line of textarea"
+              rows="1"
+            >
             </textarea>
-            <input class="button" type="submit" value="Submit input" />
+            <input
+              class="button"
+              type="submit"
+              value="Submit input"
+              onclick="getAPI('starry night')"
+            />
             <div class="dropdown is-hoverable">
               <div class="dropdown-trigger">
                 <button
@@ -119,31 +127,29 @@
             </div>
             <div class="prevoiusSearches">prevoius searches</div>
           </div>
-    <!-- <div class="mapLink">
+          <!-- <div class="mapLink">
         
     </div> -->
           <div class="column is-four-fifth displayColumn">
             <div>
               <figure class="image is-50x50">
-                <img src="assets\pictures\frame.png" />
+                <img src="assets\pictures\frame.png" class="image-frame" />
               </figure>
+              <div><img src="" id="artDisplay" class="art-display" /></div>
             </div>
             <div class="infoCard">
-              <img src="assets/pictures/whitePaper-1-1.jpg"/>
+              <img src="assets/pictures/whitePaper-1-1.jpg" />
             </div>
-            <div> info</div>
+            <div>info</div>
           </div>
         </div>
 
         <div class="mapLink">
-          <a href="visit.html">  Come Visit Us!  </a>
+          <a href="visit.html"> Come Visit Us! </a>
         </div>
-
       </div>
-  </section>
+    </section>
 
-  <script src="./assets/script.js"></script>
-
-</body>
-
+    <script src="./assets/script.js"></script>
+  </body>
 </html>
