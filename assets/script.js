@@ -24,6 +24,9 @@ https://maps.metmuseum.org/galleries/fifth-ave/2/822
 The results are displayed on the screen
 
  */
+var artistEl = document.getElementsByClassName("artist");
+var searchButton = document.getElementById("search-button");
+//var searchString = "";
 var objectIds = [];
 var objectID = 0;
 var searchHistory = [];
@@ -42,26 +45,43 @@ var requestOptions = {
 //-- cut off at end
 //--pusyh to local storage with stringify
 
-//-----------THIS FUNCTION, when called, executes API GETS and sets values.--------------------------//
+searchButton.addEventListener("click", () => getAPI());
+// var someArray=[ ];
+// // function artMedium () {
+//     fetch (https://collectionapi.metmuseum.org/public/collection/v1/objects?medium&) 
+//     .then() {
+//         // return response.json();
+//     })
+//     .then(function (data) {
+//         // //How do I do this 5 times?
+//         // var mediumID = Math.floor(Math.random() * data.objectIDs.length) 
+//         // var randomMedium =  data.objectID[mediumID] 
+//         // somearray.push(randomMedium )
+       
+//     })
 
-// need to have a click funtion for the 3 search parameter buttons- would like to have the met info somehow put into these buttons instead of making this many-
-// https://collectionapi.metmuseum.org/public/collection/v1/objects?medium& - mediums api call 
-// https://collectionapi.metmuseum.org/public/collection/v1/objects?city& - city api call
-// https://collectionapi.metmuseum.org/public/collection/v1/objects?city& - period api call 
-function getAPI(searchString) {
+    //your'e gonn awant to loop through your someArray and populate buttons with text from the array index...
+// }
+
+
+//-----------THIS FUNCTION, when called, executes API GETS and sets values.--------------------------//
+function getAPI() {
     //Clearing Local Storage before the 
     localStorage.clear("objectIDs");
 
+    searchString = document.getElementById("search-input").value;
+    console.log(searchString);
 
-
-    //console.log("I made it!!");
+    console.log("I made it!!");
     //----------------pulled from POSTMAN-----------------------//
-    //---additional parameter added to only return object IDs that have images (would be silly to have facts without someothing pretty to show)---// 
+
+    //---additional parameter added to only return object IDs that have images (would be silly to have facts without something pretty to show)---//
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?hasImage=true&q=${searchString}`, requestOptions)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
+            console.log(data);
             objectIds = data.objectIDs;
             var choseID = Math.floor(Math.random() * objectIds.length)
             //console.log(objectIds[choseID]);
@@ -109,12 +129,14 @@ function displayResults(data) {
     console.log(data);
     var objectDate = data.objectDate;
     //console.log(objectDate);
+
     //--obtained from Gallery Number - correlates to place in Museum--//
     var locationInMuseum = data.GalleryNumber;
     //console.log(locationInMuseum);
     var periodType = data.period;
     //console.log(periodType);
     var artistName = data.artistDisplayName;
+    artistEl.textContent = artistName;
     //console.log(artistName);
     var workTitle = data.title;
     //console.log(workTitle);
