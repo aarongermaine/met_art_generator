@@ -1,18 +1,20 @@
  html {
   height: 100%;
   background: darkgray;
+  background-image: url("./pictures/old-cement-wall-texture_1149-1280.jpg");
 }
+
 
 body {
     background-image: url("./pictures/old-cement-wall-texture_1149-1280.jpg");
-  }
+  } */
 
 .header {
       background-image: url("./pictures/stoneTexture.jpg"); 
       text-align: center;
       font-size: 65px;
       font-family: "MetSerif","Georgia","Times New Roman",Times,serif;
-      background-color:darkgray;
+      background-color:darkslategrey;
       color: white;
       padding: 40px;
       border-bottom: darkslategrey;
@@ -32,6 +34,7 @@ body {
 
 .displayColumn {
     background-image: url("./pictures/old-cement-wall-texture_1149-1280.jpg");
+
     padding: 50px;
     margin: 5px;
     /* border: darkslategrey; */
@@ -67,9 +70,34 @@ body {
     position: relative;
   }
 
-.infoCard {
+ .infoCard {
+    float: right;
+    position: relative;
+    margin: 15px;
+  }
+
+  .artist {
+
     position: absolute;
-    right: 100px;
-    bottom: -150px;
-    margin: 10px;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .date {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .otherInfo {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .info {
+    margin: 15px;
   }

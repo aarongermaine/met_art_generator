@@ -24,6 +24,9 @@ https://maps.metmuseum.org/galleries/fifth-ave/2/822
 The results are displayed on the screen
 
  */
+var artistEl = document.getElementsByClassName("artist");
+var searchButton = document.getElementById("search-button");
+//var searchString = "";
 var objectIds = [];
 var objectID = 0;
 var searchHistory = [];
@@ -45,7 +48,12 @@ var requestOptions = {
 //-- cut off at end
 //--pusyh to local storage with stringify
 
+//-----------EVENT LISTENER TO CALL GET API FUNCTION-----------------//
+searchButton.addEventListener("click", () => getAPI());
+
+
 //-----------THIS FUNCTION, when called, executes API GETS and sets values.--------------------------//
+
 function getAPI(searchString) {
   //Clearing Local Storage before the
   localStorage.clear("objectIDs");
@@ -71,6 +79,33 @@ function getAPI(searchString) {
     .catch((error) => console.log("error", error));
 }
 
+function getAPI() {
+    //Clearing Local Storage before the 
+    localStorage.clear("objectIDs");
+
+    searchString = document.getElementById("search-input").value;
+    console.log(searchString);
+
+    console.log("I made it!!");
+    //----------------pulled from POSTMAN-----------------------//
+
+    //---additional parameter added to only return object IDs that have images (would be silly to have facts without something pretty to show)---//
+    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?hasImage=true&q=${searchString}`, requestOptions)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            objectIds = data.objectIDs;
+            var choseID = Math.floor(Math.random() * objectIds.length)
+            //console.log(objectIds[choseID]);
+            localStorage.setItem("objectIDs", objectIds[choseID])
+            //console.log(objectIds);
+            getDetails();
+        })
+        .catch(error => console.log('error', error));
+};
+
 function getDetails() {
   objectID = parseInt(localStorage.getItem("objectIDs"));
   console.log(objectID);
@@ -91,6 +126,7 @@ function getDetails() {
 }
 
 function displayResults(data) {
+
   //adding object ID to search history array so it can be searched again
   searchHistory.unshift(objectID);
   searchHistory.length = 3;
@@ -134,3 +170,44 @@ function displayResults(data) {
   var medium = data.medium;
   //console.log(medium);
 }
+
+
+    //adding object ID to search history array so it can be searched again
+    searchHistory.unshift(objectID);
+    searchHistory.length = 3;
+    console.log(searchHistory);
+    localStorage.setItem("searchHist", searchHistory);
+
+    //adding titles to object ID array
+    searchedTitles.unshift(data.title);
+    searchedTitles.length = 3;
+    console.log(searchedTitles);
+    localStorage.setItem("titles", searchedTitles)
+
+
+
+    console.log(data);
+    var objectDate = data.objectDate;
+    //console.log(objectDate);
+
+    //--obtained from Gallery Number - correlates to place in Museum--//
+    var locationInMuseum = data.GalleryNumber;
+    //console.log(locationInMuseum);
+    var periodType = data.period;
+    //console.log(periodType);
+    var artistName = data.artistDisplayName;
+    artistEl.textContent = artistName;
+    //console.log(artistName);
+    var workTitle = data.title;
+    //console.log(workTitle);
+    var rightsReproduction = data.rightsAndReproduction;
+    //console.log(rightsReproduction);
+    var learnMore = data.objectWikidata_URL;
+    //console.log(learnMore);
+    var imageURL = data.primaryImage;
+    //console.log(imageURL);
+    var medium = data.medium;
+    //console.log(medium);
+
+};
+
