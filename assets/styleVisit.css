@@ -32,7 +32,9 @@ html {
   }
 
   .map {
-    padding: 250px;
+    /* height: 200px;
+    width: 200px; */
+    padding: 200px;
     color: darkslategrey;
     border-width: 5px;
     border-style: solid;
