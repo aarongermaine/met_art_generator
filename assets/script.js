@@ -46,7 +46,8 @@ var requestOptions = {
 //--pusyh to local storage with stringify
 
 searchButton.addEventListener("click", () => getAPI());
-// var someArray=[ ];
+// var mediumArray=[ ];
+// for (i=0, i < 5, i++)
 // // function artMedium () {
 //     fetch (https://collectionapi.metmuseum.org/public/collection/v1/objects?medium&) 
 //     .then() {
@@ -56,13 +57,42 @@ searchButton.addEventListener("click", () => getAPI());
 //         // //How do I do this 5 times?
 //         // var mediumID = Math.floor(Math.random() * data.objectIDs.length) 
 //         // var randomMedium =  data.objectID[mediumID] 
-//         // somearray.push(randomMedium )
+//         // mediumArray.push(randomMedium)
        
 //     })
 
-    //your'e gonn awant to loop through your someArray and populate buttons with text from the array index...
+    //you're gonna want to loop through your someArray and populate buttons with text from the array index...
 // }
+// var cityArray=[ ];
+// for (i=0, i < 5, i++)
+// // function artCity () {
+//     fetch (https://collectionapi.metmuseum.org/public/collection/v1/objects?city&) 
+//     .then() {
+//         // return response.json();
+//     })
+//     .then(function (data) {
+//         // //How do I do this 5 times?
+//         // var cityID = Math.floor(Math.random() * data.objectIDs.length) 
+//         // var randomCity =  data.objectID[cityID] 
+//         // cityArray.push(randomCity)
+       
+//     })
+// var periodArray=[ ];
+// for (i=0, i < 5, i++)
+// // function artPeriod () {
+//     fetch (https://collectionapi.metmuseum.org/public/collection/v1/objects?period&) 
+//     .then() {
+//         // return response.json();
+//     })
+//     .then(function (data) {
+//         // //How do I do this 5 times?
+//         // var periodID = Math.floor(Math.random() * data.objectIDs.length) 
+//         // var randomPeriod =  data.objectID[periodID] 
+//         // cityArray.push(randomPeriod)
+       
+//     })
 
+//need to add button.textcontent.someArray[] to get the texts to display on the buttons
 
 //-----------THIS FUNCTION, when called, executes API GETS and sets values.--------------------------//
 function getAPI() {
