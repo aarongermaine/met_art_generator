@@ -7,7 +7,7 @@
 
 body {
     background-image: url("./pictures/old-cement-wall-texture_1149-1280.jpg");
-  } */
+  } 
 
 .header {
       background-image: url("./pictures/stoneTexture.jpg"); 
@@ -57,9 +57,7 @@ body {
     }
 
 .mapLink {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
+font-size: 20px;
   }
 
 .is-50x50 {
