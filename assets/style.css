@@ -32,20 +32,18 @@
   }
 
   .displayColumn {
-    /* background-image: url("./pictures/old-cement-wall-texture_1149-1280.jpg"); */
     padding: 50px;
     margin: 5px;
-    /* border: darkslategrey; */
-    /* border-style: solid; */
+    /* border: darkslategrey; 
+    border-style: solid; */
   }
 
   .mapLink {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
+    font-size: 20px;
   }
 
-  .is-50x50 {
+  .frame {
+    margin-top: -50px ;
     position: relative;
   }
 
