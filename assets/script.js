@@ -39,11 +39,7 @@ var requestOptions = {
     redirect: 'follow'
 };
 
-//use splice/
-//--add to beginning
-//-- check length
-//-- cut off at end
-//--pusyh to local storage with stringify
+
 
 //-----------EVENT LISTENER TO CALL GET API FUNCTION-----------------//
 searchButton.addEventListener("click", () => getAPI());
@@ -80,6 +76,8 @@ function getAPI() {
 function getDetails() {
     objectID = parseInt(localStorage.getItem("objectIDs"));
     console.log(objectID);
+
+    //with additional search parameter - add if statement to identify whether or not department ID 
 
     //-------------COPIED FROM POSTMAN---------------------//
     // - Second Function call using the object ID obtained fromthe prior inquiry - //
