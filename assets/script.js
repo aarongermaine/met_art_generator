@@ -75,7 +75,6 @@ function getAPI() {
             getDetails();
         })
         .catch(error => console.log('error', error));
-
 };
 
 function getDetails() {
