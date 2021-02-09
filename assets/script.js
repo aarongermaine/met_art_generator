@@ -46,34 +46,53 @@ var requestOptions = {
 
 //-----------EVENT LISTENER TO CALL GET API FUNCTION-----------------//
 searchButton.addEventListener("click", () => getAPI());
+// var mediumArray=[ ];
+// for (i=0, i < 5, i++)
+// // function artMedium () {
+//     fetch (https://collectionapi.metmuseum.org/public/collection/v1/objects?medium&) 
+//     .then() {
+//         // return response.json();
+//     })
+//     .then(function (data) {
+//         // //How do I do this 5 times?
+//         // var mediumID = Math.floor(Math.random() * data.objectIDs.length) 
+//         // var randomMedium =  data.objectID[mediumID] 
+//         // mediumArray.push(randomMedium)
+       
+//     })
 
+    //you're gonna want to loop through your someArray and populate buttons with text from the array index...
+// }
+// var cityArray=[ ];
+// for (i=0, i < 5, i++)
+// // function artCity () {
+//     fetch (https://collectionapi.metmuseum.org/public/collection/v1/objects?city&) 
+//     .then() {
+//         // return response.json();
+//     })
+//     .then(function (data) {
+//         // //How do I do this 5 times?
+//         // var cityID = Math.floor(Math.random() * data.objectIDs.length) 
+//         // var randomCity =  data.objectID[cityID] 
+//         // cityArray.push(randomCity)
+       
+//     })
+// var periodArray=[ ];
+// for (i=0, i < 5, i++)
+// // function artPeriod () {
+//     fetch (https://collectionapi.metmuseum.org/public/collection/v1/objects?period&) 
+//     .then() {
+//         // return response.json();
+//     })
+//     .then(function (data) {
+//         // //How do I do this 5 times?
+//         // var periodID = Math.floor(Math.random() * data.objectIDs.length) 
+//         // var randomPeriod =  data.objectID[periodID] 
+//         // cityArray.push(randomPeriod)
+       
+//     })
 
-//-----------THIS FUNCTION, when called, executes API GETS and sets values.--------------------------//
-
-function getAPI(searchString) {
-  //Clearing Local Storage before the
-  localStorage.clear("objectIDs");
-
-  //console.log("I made it!!");
-  //----------------pulled from POSTMAN-----------------------//
-  //---additional parameter added to only return object IDs that have images (would be silly to have facts without someothing pretty to show)---//
-  fetch(
-    `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImage=true&q=${searchString}`,
-    requestOptions
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      objectIds = data.objectIDs;
-      var choseID = Math.floor(Math.random() * objectIds.length);
-      //console.log(objectIds[choseID]);
-      localStorage.setItem("objectIDs", objectIds[choseID]);
-      //console.log(objectIds);
-      getDetails();
-    })
-    .catch((error) => console.log("error", error));
-}
+//need to add button.textcontent.someArray[] to get the texts to display on the buttons
 
 function getAPI() {
     //Clearing Local Storage before the 
