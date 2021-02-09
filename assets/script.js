@@ -43,6 +43,11 @@ var requestOptions = {
 //--pusyh to local storage with stringify
 
 //-----------THIS FUNCTION, when called, executes API GETS and sets values.--------------------------//
+
+// need to have a click funtion for the 3 search parameter buttons- would like to have the met info somehow put into these buttons instead of making this many-
+// https://collectionapi.metmuseum.org/public/collection/v1/objects?medium& - mediums api call 
+// https://collectionapi.metmuseum.org/public/collection/v1/objects?city& - city api call
+// https://collectionapi.metmuseum.org/public/collection/v1/objects?city& - period api call 
 function getAPI(searchString) {
     //Clearing Local Storage before the 
     localStorage.clear("objectIDs");
@@ -51,7 +56,7 @@ function getAPI(searchString) {
 
     //console.log("I made it!!");
     //----------------pulled from POSTMAN-----------------------//
-    //---additional parameter added to only return object IDs that have images (would be silly to have facts without someothing pretty to show)---//
+    //---additional parameter added to only return object IDs that have images (would be silly to have facts without someothing pretty to show)---// 
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?hasImage=true&q=${searchString}`, requestOptions)
         .then(function (response) {
             return response.json();
