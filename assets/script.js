@@ -42,11 +42,7 @@ var requestOptions = {
   redirect: "follow",
 };
 
-//use splice/
-//--add to beginning
-//-- check length
-//-- cut off at end
-//--pusyh to local storage with stringify
+
 
 //-----------EVENT LISTENER TO CALL GET API FUNCTION-----------------//
 searchButton.addEventListener("click", () => getAPI());
@@ -125,7 +121,23 @@ function getDetails() {
     .catch((error) => console.log("error", error));
 }
 
+
+    //with additional search parameter - add if statement to identify whether or not department ID 
+
+    //-------------COPIED FROM POSTMAN---------------------//
+    // - Second Function call using the object ID obtained fromthe prior inquiry - //
+    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`, requestOptions)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            displayResults(data);
+        })
+        .catch(error => console.log('error', error));
+};
+=======
 function displayResults(data) {
+
 
   //adding object ID to search history array so it can be searched again
   searchHistory.unshift(objectID);
