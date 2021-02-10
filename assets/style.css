@@ -1,15 +1,14 @@
- html {
+html {
   height: 100%;
   background: darkgray;
   background-image: url("./pictures/old-cement-wall-texture_1149-1280.jpg");
 }
 
-
 body {
     background-image: url("./pictures/old-cement-wall-texture_1149-1280.jpg");
-  } */
+  } 
 
-.header {
+  .header {
       background-image: url("./pictures/stoneTexture.jpg"); 
       text-align: center;
       font-size: 65px;
@@ -23,7 +22,7 @@ body {
       letter-spacing: 4px;
   }
 
-.searchColumn {
+  .searchColumn {
     background-image: url("./pictures/corkBoard.jpg");
     background-color: darkgray;
     padding: 50px;
@@ -32,13 +31,9 @@ body {
     border-style: solid; 
   }
 
-.displayColumn {
-    background-image: url("./pictures/old-cement-wall-texture_1149-1280.jpg");
-
+  .displayColumn {
     padding: 50px;
     margin: 5px;
-    /* border: darkslategrey; */
-    /* border-style: solid; */
   }
 
     .image-frame
@@ -60,13 +55,12 @@ body {
       margin-right: auto;
     }
 
-.mapLink {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
+  .mapLink {
+    font-size: 20px;
   }
 
-.is-50x50 {
+  .frame {
+    margin-top: -50px;
     position: relative;
   }
 
@@ -77,7 +71,6 @@ body {
   }
 
   .artist {
-
     position: absolute;
     top: 25%;
     left: 50%;
@@ -92,7 +85,7 @@ body {
   }
 
   .otherInfo {
-    position: absolute;
+    position: absolute; 
     top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -103,6 +96,8 @@ body {
   }
 
   #map{
-    position:absolute;
-    width:100%;
-  }
+      position:absolute;
+      width:100%;
+    }
+  
+  

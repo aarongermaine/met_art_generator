@@ -1,32 +1,25 @@
-html {
-  height: 100%;
-  background: darkgray;
+.navbar-item {
+  color: white;
+  font-size: 20px;
 }
 
-  body {
-    background-image: url("./pictures/whitePaper.jpg");
-  }
+.image {
+  padding: 10px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black;
+}
 
-  .navbar {
-    background-image: url("./pictures/wood_texture.jpg");
-    margin-bottom: 15px;
-    border-bottom: black;
-    border-width: 5px;
-    border-style: solid;
-  }
+.museumInfo {
+  font-size: 20px;
+}
 
-  .navbar-item {
-    color: white;
-    font-size: 20px;
-  }
-
-  .image {
-    padding: 10px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: black;
-  }
-
-  .museumInfo {
-    font-size: 20px;
-  }
+.map {
+  padding: 200px;
+  color: darkslategrey;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black;
+  margin-bottom: 75px;
+  margin-top: 20px;
+}
