@@ -33,13 +33,13 @@ var searchHistory = [];
 var searchedTitles = [];
 var myHeaders = new Headers();
 myHeaders.append(
-  "Cookie",
-  "incap_ses_208_1662004=wtUiUDkio3mJwBg7C/fiAsPsHWAAAAAAHxEusp5NdaZhKLNQkhNvkw==; visid_incap_1662004=yWfsog6jQna1Q6+jh2eZPSBmG2AAAAAAQUIPAAAAAADi+cYxvBpgB+yJk2PSo8a7"
+    "Cookie",
+    "incap_ses_208_1662004=wtUiUDkio3mJwBg7C/fiAsPsHWAAAAAAHxEusp5NdaZhKLNQkhNvkw==; visid_incap_1662004=yWfsog6jQna1Q6+jh2eZPSBmG2AAAAAAQUIPAAAAAADi+cYxvBpgB+yJk2PSo8a7"
 );
 var requestOptions = {
-  method: "GET",
-  headers: myHeaders,
-  redirect: "follow",
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
 };
 
 
@@ -58,10 +58,10 @@ searchButton.addEventListener("click", () => getAPI());
 //         // var mediumID = Math.floor(Math.random() * data.objectIDs.length) 
 //         // var randomMedium =  data.objectID[mediumID] 
 //         // mediumArray.push(randomMedium)
-       
+
 //     })
 
-    //you're gonna want to loop through your someArray and populate buttons with text from the array index...
+//you're gonna want to loop through your someArray and populate buttons with text from the array index...
 // }
 // var cityArray=[ ];
 // for (i=0, i < 5, i++)
@@ -75,7 +75,7 @@ searchButton.addEventListener("click", () => getAPI());
 //         // var cityID = Math.floor(Math.random() * data.objectIDs.length) 
 //         // var randomCity =  data.objectID[cityID] 
 //         // cityArray.push(randomCity)
-       
+
 //     })
 // var periodArray=[ ];
 // for (i=0, i < 5, i++)
@@ -89,7 +89,7 @@ searchButton.addEventListener("click", () => getAPI());
 //         // var periodID = Math.floor(Math.random() * data.objectIDs.length) 
 //         // var randomPeriod =  data.objectID[periodID] 
 //         // cityArray.push(randomPeriod)
-       
+
 //     })
 
 //need to add button.textcontent.someArray[] to get the texts to display on the buttons
@@ -122,24 +122,8 @@ function getAPI() {
 };
 
 function getDetails() {
-  objectID = parseInt(localStorage.getItem("objectIDs"));
-  console.log(objectID);
-
-  //-------------COPIED FROM POSTMAN---------------------//
-  // - Second Function call using the object ID obtained fromthe prior inquiry - //
-  fetch(
-    `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`,
-    requestOptions
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      displayResults(data);
-    })
-    .catch((error) => console.log("error", error));
-}
-
+    objectID = parseInt(localStorage.getItem("objectIDs"));
+    console.log(objectID);
 
     //with additional search parameter - add if statement to identify whether or not department ID 
 
@@ -152,55 +136,35 @@ function getDetails() {
         .then(function (data) {
             displayResults(data);
         })
-        .catch(error => console.log('error', error));
+        .catch((error) => console.log("error", error));
 };
 
 function displayResults(data) {
 
-
-  //adding object ID to search history array so it can be searched again
-  searchHistory.unshift(objectID);
-  searchHistory.length = 3;
-  console.log(searchHistory);
-  localStorage.setItem("searchHist", searchHistory);
-
-  //adding titles to object ID array
-  searchedTitles.unshift(data.title);
-  searchedTitles.length = 3;
-  console.log(searchedTitles);
-  localStorage.setItem("titles", searchedTitles);
-
-  console.log(data);
-  var objectDate = data.objectDate;
-  //console.log(objectDate);
-  //--obtained from Gallery Number - correlates to place in Museum--//
-  var locationInMuseum = data.GalleryNumber;
-  //console.log(locationInMuseum);
-  var periodType = data.period;
-  //console.log(periodType);
-  var artistName = data.artistDisplayName;
-  //console.log(artistName);
-  var workTitle = data.title;
-  //console.log(workTitle);
-  var rightsReproduction = data.rightsAndReproduction;
-  //console.log(rightsReproduction);
-  var learnMore = data.objectWikidata_URL;
-  //console.log(learnMore);
-  var imageURL = data.primaryImage;
-  //console.log(imageURL);
-
-  var displayImage = function () {
+function displayImage(imageURL) {
     image = document.getElementById("artDisplay");
     image.src = imageURL;
 
     console.log(image);
-  };
+};
 
-  displayImage();
 
-  var medium = data.medium;
-  //console.log(medium);
-}
+function displayResults(data) {
+
+    //adding object ID to search history array so it can be searched again
+    searchHistory.unshift(objectID);
+    searchHistory.length = 3;
+    console.log(searchHistory);
+    localStorage.setItem("searchHist", searchHistory);
+
+    //adding titles to object ID array
+    searchedTitles.unshift(data.title);
+    searchedTitles.length = 3;
+    console.log(searchedTitles);
+    localStorage.setItem("titles", searchedTitles);
+
+
+    displayImage(imageURL);
 
 
     //adding object ID to search history array so it can be searched again
