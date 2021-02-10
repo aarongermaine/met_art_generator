@@ -1,4 +1,4 @@
- html {
+html {
   height: 100%;
   background: darkgray;
   background-image: url("./pictures/old-cement-wall-texture_1149-1280.jpg");
@@ -96,6 +96,8 @@ body {
   }
 
   #map{
-    position:absolute;
-    width:100%;
-  }
+      position:absolute;
+      width:100%;
+    }
+  
+  
