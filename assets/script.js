@@ -139,6 +139,8 @@ function getDetails() {
         .catch((error) => console.log("error", error));
 };
 
+function displayResults(data) {
+
 function displayImage(imageURL) {
     image = document.getElementById("artDisplay");
     image.src = imageURL;
