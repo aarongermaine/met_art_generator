@@ -32,12 +32,11 @@ html {
   }
 
   .map {
-    /* height: 200px;
-    width: 200px; */
     padding: 200px;
     color: darkslategrey;
     border-width: 5px;
     border-style: solid;
     border-color: black;
     margin-bottom: 75px;
+    margin-top: 20px;
   }
