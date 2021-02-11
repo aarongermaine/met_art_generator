@@ -97,6 +97,8 @@ searchButton.addEventListener("click", () => getAPI());
 
 //need to add button.textcontent.someArray[] to get the texts to display on the buttons
 
+searchButton.addEventListener("click", () => getAPI());
+
 function getAPI() {
     //Clearing Local Storage before the 
     localStorage.clear("objectIDs");
