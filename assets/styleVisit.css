@@ -47,4 +47,9 @@ html {
     margin-top: 20px;
   }
  
+  #mapid {
+    border-style: solid;
+    border-color: black;
+    margin: 20px;
+  }
   
