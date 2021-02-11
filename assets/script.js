@@ -33,13 +33,13 @@ var searchHistory = [];
 var searchedTitles = [];
 var myHeaders = new Headers();
 myHeaders.append(
-  "Cookie",
-  "incap_ses_208_1662004=wtUiUDkio3mJwBg7C/fiAsPsHWAAAAAAHxEusp5NdaZhKLNQkhNvkw==; visid_incap_1662004=yWfsog6jQna1Q6+jh2eZPSBmG2AAAAAAQUIPAAAAAADi+cYxvBpgB+yJk2PSo8a7"
+    "Cookie",
+    "incap_ses_208_1662004=wtUiUDkio3mJwBg7C/fiAsPsHWAAAAAAHxEusp5NdaZhKLNQkhNvkw==; visid_incap_1662004=yWfsog6jQna1Q6+jh2eZPSBmG2AAAAAAQUIPAAAAAADi+cYxvBpgB+yJk2PSo8a7"
 );
 var requestOptions = {
-  method: "GET",
-  headers: myHeaders,
-  redirect: "follow",
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
 };
 
 //-----------EVENT LISTENER TO CALL GET API FUNCTION-----------------//
@@ -98,132 +98,135 @@ searchButton.addEventListener("click", () => getAPI());
 searchButton.addEventListener("click", () => getAPI());
 
 function getAPI() {
-  //Clearing Local Storage before the
-  localStorage.clear("objectIDs");
+    //Clearing Local Storage before the
+    localStorage.clear("objectIDs");
 
-  searchString = document.getElementById("search-input").value;
-  console.log(searchString);
+    searchString = document.getElementById("search-input").value;
+    console.log(searchString);
 
-  console.log("I made it!!");
-  //----------------pulled from POSTMAN-----------------------//
+    console.log("I made it!!");
+    //----------------pulled from POSTMAN-----------------------//
 
-  //---additional parameter added to only return object IDs that have images (would be silly to have facts without something pretty to show)---//
-  fetch(
-    `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImage=true&q=${searchString}`,
-    requestOptions
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      objectIds = data.objectIDs;
-      var choseID = Math.floor(Math.random() * objectIds.length);
-      //console.log(objectIds[choseID]);
-      localStorage.setItem("objectIDs", objectIds[choseID]);
-      //console.log(objectIds);
-      getDetails();
-    })
-    .catch((error) => console.log("error", error));
+    //---additional parameter added to only return object IDs that have images (would be silly to have facts without something pretty to show)---//
+    fetch(
+        `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImage=true&q=${searchString}`,
+        requestOptions
+    )
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            objectIds = data.objectIDs;
+            var choseID = Math.floor(Math.random() * objectIds.length);
+            //console.log(objectIds[choseID]);
+            localStorage.setItem("objectIDs", objectIds[choseID]);
+            //console.log(objectIds);
+            getDetails();
+        })
+        .catch((error) => console.log("error", error));
 }
 
 function getDetails() {
-  objectID = parseInt(localStorage.getItem("objectIDs"));
-  console.log(objectID);
+    objectID = parseInt(localStorage.getItem("objectIDs"));
+    console.log(objectID);
 
-  //with additional search parameter - add if statement to identify whether or not department ID
+    //with additional search parameter - add if statement to identify whether or not department ID
 
-  //-------------COPIED FROM POSTMAN---------------------//
-  // - Second Function call using the object ID obtained fromthe prior inquiry - //
-  fetch(
-    `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`,
-    requestOptions
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      displayResults(data);
-    })
-    .catch((error) => console.log("error", error));
+    //-------------COPIED FROM POSTMAN---------------------//
+    // - Second Function call using the object ID obtained fromthe prior inquiry - //
+    fetch(
+        `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`,
+        requestOptions
+    )
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            displayResults(data);
+        })
+        .catch((error) => console.log("error", error));
 }
 
 function displayResults(data) {
-  //adding object ID to search history array so it can be searched again
-  searchHistory.unshift(objectID);
-  searchHistory.length = 3;
-  console.log(searchHistory);
-  localStorage.setItem("searchHist", searchHistory);
+    //adding object ID to search history array so it can be searched again
+    searchHistory.unshift(objectID);
+    searchHistory.length = 3;
+    console.log(searchHistory);
+    localStorage.setItem("searchHist", searchHistory);
 
-  //adding titles to object ID array
-  searchedTitles.unshift(data.title);
-  searchedTitles.length = 3;
-  console.log(searchedTitles);
-  localStorage.setItem("titles", searchedTitles);
+    //adding titles to object ID array
+    searchedTitles.unshift(data.title);
+    searchedTitles.length = 3;
+    console.log(searchedTitles);
+    localStorage.setItem("titles", searchedTitles);
 
-  //adding object ID to search history array so it can be searched again
-  searchHistory.unshift(objectID);
-  searchHistory.length = 3;
-  console.log(searchHistory);
-  localStorage.setItem("searchHist", searchHistory);
+    //adding object ID to search history array so it can be searched again
+    searchHistory.unshift(objectID);
+    searchHistory.length = 3;
+    console.log(searchHistory);
+    localStorage.setItem("searchHist", searchHistory);
 
-  //adding titles to object ID array
-  searchedTitles.unshift(data.title);
-  searchedTitles.length = 3;
-  console.log(searchedTitles);
-  localStorage.setItem("titles", searchedTitles);
+    //adding titles to object ID array
+    searchedTitles.unshift(data.title);
+    searchedTitles.length = 3;
+    console.log(searchedTitles);
+    localStorage.setItem("titles", searchedTitles);
 
-  console.log(data);
-  var objectDate = data.objectDate;
-  //console.log(objectDate);
+    console.log(data);
+    var objectDate = data.objectDate;
+    //console.log(objectDate);
 
-  //--obtained from Gallery Number - correlates to place in Museum--//
-  var locationInMuseum = data.GalleryNumber;
-  //console.log(locationInMuseum);
-  var periodType = data.period;
-  //console.log(periodType);
-  var artistName = data.artistDisplayName;
-  artistEl.textContent = artistName;
-  //console.log(artistName);
-  var workTitle = data.title;
-  //console.log(workTitle);
-  var rightsReproduction = data.rightsAndReproduction;
-  //console.log(rightsReproduction);
-  var learnMore = data.objectWikidata_URL;
-  //console.log(learnMore);
-  var imageURL = data.primaryImage;
-  console.log(imageURL);
-  var medium = data.medium;
-  //console.log(medium);
-  function displayImage() {
-    image = document.getElementById("artDisplay");
-    image.src = imageURL;
+    //--obtained from Gallery Number - correlates to place in Museum--//
+    var locationInMuseum = data.GalleryNumber;
+    //console.log(locationInMuseum);
+    var periodType = data.period;
+    //console.log(periodType);
+    var artistName = data.artistDisplayName;
+    artistEl.textContent = artistName;
+    //console.log(artistName);
+    var workTitle = data.title;
+    //console.log(workTitle);
+    var rightsReproduction = data.rightsAndReproduction;
+    //console.log(rightsReproduction);
+    var learnMore = data.objectWikidata_URL;
+    //console.log(learnMore);
+    var imageURL = data.primaryImage;
+    console.log(imageURL);
+    var medium = data.medium;
+    mediumEl = document.getElementById("art-medium");
+    mediumEl.innerHTML = `Artwork Medium: ${medium}`;
+    //console.log(medium);
+    function displayImage() {
+        image = document.getElementById("artDisplay");
+        image.src = imageURL;
 
-    console.log(image.src);
-  }
-  displayImage();
+        console.log(image.src);
+    }
+    displayImage();
 
-  function displayTitle() {
-    artistTitle = document.getElementById("artist-title");
-    artistTitle.innerHTML = workTitle;
-  }
-  displayTitle();
+    function displayTitle() {
+        artistTitle = document.getElementById("artist-title");
+        artistTitle.innerHTML = `Work Title: ${workTitle}`;
+    }
+    displayTitle();
 
-  function displayName() {
-    artist = document.getElementById("artist-name");
-    artist.innerHTML = artistName;
-  }
-  displayName();
+    function displayName() {
+        artist = document.getElementById("artist-name");
+        artist.innerHTML = `Artist Name: ${artistName}`;
 
-  function displayDate() {
-    date = document.getElementById("artist-date");
-    date.innerHTML = objectDate;
-  }
-  displayDate();
+    }
+    displayName();
 
-  function displayLoc() {
-    artistLocation = document.getElementById("artist-location");
-    artistLocation.innerHTML = locationInMuseum;
-  }
-  displayLoc();
+    function displayDate() {
+        date = document.getElementById("artist-date");
+        date.innerHTML = `Work Created on/around: ${objectDate}`;
+    }
+    displayDate();
+
+    function displayLoc() {
+        artistLocation = document.getElementById("artist-location");
+        artistLocation.innerHTML = `<a href="https://maps.metmuseum.org/galleries/fifth-ave/2/${locationInMuseum} target="_blank">Click here to where this is located</a>`;
+    }
+    displayLoc();
 }
