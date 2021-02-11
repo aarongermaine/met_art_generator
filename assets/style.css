@@ -56,8 +56,11 @@ body {
     }
 
   .mapLink {
+    padding-bottom: 20px;
+    position: absolute;
     font-size: 20px;
     margin-top: 20px;
+    left: 10%;
   }
 
   .frame {
@@ -69,6 +72,8 @@ body {
     float: left;
     position: relative;
     margin: 15px;
+    margin-left: 10%;
+    margin-right: 10%;
   }
 
   .artTitle {
@@ -109,12 +114,12 @@ body {
       
     }
 
- button {
-  background-color: white; 
-  border: none;
-  padding: 15px 32px; 
-  text-align: center;
-  display: inline-block;
-  font-size: 14px;
+  button {
+    background-color: white; 
+    border: none;
+    padding: 15px 32px; 
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
  }
   
