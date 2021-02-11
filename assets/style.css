@@ -94,4 +94,11 @@ body {
   .info {
     margin: 15px;
   }
+
+  #map-this{
+      position:absolute;
+      left:50%;
+      
+    }
+
   
