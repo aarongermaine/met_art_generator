@@ -95,9 +95,10 @@ body {
     margin: 15px;
   }
 
-  #map{
+  #map-this{
       position:absolute;
-      width:100%;
+      left:50%;
+      
     }
   
   
