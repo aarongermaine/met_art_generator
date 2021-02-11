@@ -205,4 +205,4 @@ function displayResults(data) {
     //console.log(medium);
 
 };
-
+}
