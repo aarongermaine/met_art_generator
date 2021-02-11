@@ -29,20 +29,19 @@ html {
 
   .museumInfo {
     font-size: 20px;
-  }
-
-  .map {
-    padding: 200px;
-    color: darkslategrey;
-    border-width: 5px;
-    border-style: solid;
-    border-color: black;
-    margin-bottom: 75px;
-    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   .directions {
-    padding: 200px;
     color: darkslategrey;
-    margin: 20px;
+    text-align: center;
   }
+ 
+  #mapid {
+    margin-top: -30px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+    height: 400px;
+  }
+  
