@@ -189,7 +189,7 @@ function displayResults(data) {
   //console.log(rightsReproduction);
   var learnMore = data.objectWikidata_URL;
   //console.log(learnMore);
-  var imageURL = data.primaryImage;
+  var imageURL = data.primaryImageSmall;
   console.log(imageURL);
   var medium = data.medium;
   //console.log(medium);
