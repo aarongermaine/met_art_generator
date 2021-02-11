@@ -181,15 +181,22 @@ function displayResults(data) {
     var locationInMuseum = data.GalleryNumber;
     //console.log(locationInMuseum);
     var periodType = data.period;
-    //console.log(periodType);
+    if (!periodType) {
+        var periodEl = document.getElementById("art-period");
+        periodEl.innerHTML = `This is from the ${periodType} period`;
+        console.log(periodType);
+    };
+
     var artistName = data.artistDisplayName;
     artistEl.textContent = artistName;
     //console.log(artistName);
     var workTitle = data.title;
-    //console.log(workTitle);
+    //console.log(workTitle);git 
     var rightsReproduction = data.rightsAndReproduction;
     //console.log(rightsReproduction);
     var learnMore = data.objectWikidata_URL;
+    var learnEl = document.getElementById("art-learn");
+    learnEl.innerHTML = `<a href="${learnMore} target="_blank">Click here to learn more about this work or art!</a>`;
     //console.log(learnMore);
     var imageURL = data.primaryImage;
     console.log(imageURL);
