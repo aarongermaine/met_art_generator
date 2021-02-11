@@ -65,28 +65,35 @@ body {
   }
 
  .infoCard {
-    float: right;
+    float: left;
     position: relative;
     margin: 15px;
   }
 
-  .artist {
+  .artTitle {
     position: absolute;
-    top: 25%;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .name {
+    position: absolute;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
 
   .date {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
 
-  .otherInfo {
+  .location {
     position: absolute; 
-    top: 75%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
