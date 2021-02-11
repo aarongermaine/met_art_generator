@@ -101,4 +101,12 @@ body {
       
     }
 
+ button {
+  background-color: white; 
+  border: none;
+  padding: 15px 32px; 
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+ }
   
