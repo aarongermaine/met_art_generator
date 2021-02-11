@@ -202,4 +202,28 @@ function displayResults(data) {
     console.log(image.src);
   }
   displayImage();
+
+  function displayTitle() {
+    artistTitle = document.getElementById("artist-title");
+    artistTitle.innerHTML = workTitle;
+  }
+  displayTitle();
+
+  function displayName() {
+    artist = document.getElementById("artist-name");
+    artist.innerHTML = artistName;
+  }
+  displayName();
+
+  function displayDate() {
+    date = document.getElementById("artist-date");
+    date.innerHTML = objectDate;
+  }
+  displayDate();
+
+  function displayLoc() {
+    artistLocation = document.getElementById("artist-location");
+    artistLocation.innerHTML = locationInMuseum;
+  }
+  displayLoc();
 }
