@@ -149,6 +149,7 @@ function getDetails() {
 }
 
 function displayResults(data) {
+
     //adding object ID to search history array so it can be searched again
     searchHistory.unshift(objectID);
     searchHistory.length = 3;
@@ -198,7 +199,7 @@ function displayResults(data) {
     var learnEl = document.getElementById("art-learn");
     learnEl.innerHTML = `<a href="${learnMore} target="_blank">Click here to learn more about this work or art!</a>`;
     //console.log(learnMore);
-    var imageURL = data.primaryImage;
+    var imageURL = data.primaryImageSmall;
     console.log(imageURL);
     var medium = data.medium;
     mediumEl = document.getElementById("art-medium");
@@ -236,4 +237,5 @@ function displayResults(data) {
         artistLocation.innerHTML = `<a href="https://maps.metmuseum.org/galleries/fifth-ave/2/${locationInMuseum} target="_blank">Click here to where this is located</a>`;
     }
     displayLoc();
+
 }
