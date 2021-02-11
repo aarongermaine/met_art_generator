@@ -91,6 +91,9 @@ searchButton.addEventListener("click", () => getAPI());
 //         // cityArray.push(randomPeriod)
 
 //     })
+// document.getElementById("mediumArray").textContent = list[mediumID].button;
+// document.getElementById("periodArray").textContent = list[periodID].button;
+// document.getElementById("cityArray").textContent = list[cityID].button;
 
 //need to add button.textcontent.someArray[] to get the texts to display on the buttons
 
@@ -205,4 +208,4 @@ function displayResults(data) {
     //console.log(medium);
 
 };
-
+}
