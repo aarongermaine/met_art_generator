@@ -86,23 +86,24 @@ function artMedium() {
             // mediumArray.push(randomMedium)
             console.log(randomMedium);
         })
-    artCity();
+    //artCity();
 }
 function artCity() {
     console.log("I've been clicked Art City");
-    fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects?city&')
+    fetch('https://collectionapi.metmuseum.org//public/collection/v1/search?geoLocation=')
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
+            console.log(data);
             for (i = 0; i < 5; i++) {
-                var newButton = document.createElement("button");
+                //var newButton = document.createElement("button");
                 newButton.textContent = random(data)
-                cityButton.append(newButton)
+                console.log(ppend(newButton));
                 // mediumButton.textContent=random(data);
             }
         })
-    artPeriod();
+    //artPeriod();
 }
 function artPeriod() {
     console.log("I've been clicked Art Period");
