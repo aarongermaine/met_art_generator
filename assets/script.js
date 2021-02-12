@@ -26,11 +26,18 @@ The results are displayed on the screen
  */
 var artistEl = document.getElementsByClassName("artist");
 var searchButton = document.getElementById("search-button");
+
+var periodButton = document.getElementById("period-button")
+var mediumButton = document.getElementById("medium-button")
+var cityButton = document.getElementById("city-button")
 //var searchString = "";
 var objectIds = [];
 var objectID = 0;
 var searchHistory = [];
 var searchedTitles = [];
+var mediumArray = [];
+var cityArray = [];
+var periodArray = [];
 var myHeaders = new Headers();
 myHeaders.append(
     "Cookie",
@@ -44,58 +51,76 @@ var requestOptions = {
 
 //-----------EVENT LISTENER TO CALL GET API FUNCTION-----------------//
 searchButton.addEventListener("click", () => getAPI());
-// var mediumArray=[ ];
-// for (i=0, i < 5, i++)
-// // function artMedium () {
-//     fetch (https://collectionapi.metmuseum.org/public/collection/v1/objects?medium&)
-//     .then() {
-//         // return response.json();
-//     })
-//     .then(function (data) {
-//         // //How do I do this 5 times?
-//         // var mediumID = Math.floor(Math.random() * data.objectIDs.length)
-//         // var randomMedium =  data.objectID[mediumID]
-//         // mediumArray.push(randomMedium)
+mediumButton.addEventListener("click", () => artMedium());
+periodButton.addEventListener("click", () => artPeriod());
+cityButton.addEventListener("click", () => artCity());
 
-//     })
+//Create a function that generates a random index from particular array
+function random(array) {
+    var randomIndex = Math.floor(Math.random() * array.length);
+    var randomElement = array[randomIndex];
+    return randomElement;
+}
+function artMedium() {
+    console.log("I've been clicked Art Medium");
+    fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects?medium&')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            for (i = 0; i < 5; i++) {
+                var newButton = document.createElement("button");
+                // var newDiv = document.createElement("div");
+                //newDiv.innerHTML= (how to add html elements dynamically
+                // var newButton = document.createElement("button");
+                // newButton.textContent=random(data)
+                // newDiv.append(newButton)
+                //var dropDownElement = document.getElementById("dropdown-menu2")
+                //dropDownElement.append(newDiv);
+                newButton.textContent = random(data)
+                mediumButton.append(newButton)
+                // mediumButton.textContent=random(data);
+            }
+            // var mediumID = Math.floor(Math.random() * data.objectsID.length)
+            // var randomMedium = data.objectsID[mediumID]
+            // mediumArray.push(randomMedium)
+            console.log(randomMedium);
+        })
+    artCity();
+}
+function artCity() {
+    console.log("I've been clicked Art City");
+    fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects?city&')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            for (i = 0; i < 5; i++) {
+                var newButton = document.createElement("button");
+                newButton.textContent = random(data)
+                cityButton.append(newButton)
+                // mediumButton.textContent=random(data);
+            }
+        })
+    artPeriod();
+}
+function artPeriod() {
+    console.log("I've been clicked Art Period");
+    fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects?period&')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            for (i = 0; i < 5; i++) {
+                var newButton = document.createElement("button");
+                newButton.textContent = random(data)
+                periodButton.append(newButton)
+                // mediumButton.textContent=random(data);
+            }
+        })
+}
 
-//you're gonna want to loop through your someArray and populate buttons with text from the array index...
-// }
-// var cityArray=[ ];
-// for (i=0, i < 5, i++)
-// // function artCity () {
-//     fetch (https://collectionapi.metmuseum.org/public/collection/v1/objects?city&)
-//     .then() {
-//         // return response.json();
-//     })
-//     .then(function (data) {
-//         // //How do I do this 5 times?
-//         // var cityID = Math.floor(Math.random() * data.objectIDs.length)
-//         // var randomCity =  data.objectID[cityID]
-//         // cityArray.push(randomCity)
 
-//     })
-// var periodArray=[ ];
-// for (i=0, i < 5, i++)
-// // function artPeriod () {
-//     fetch (https://collectionapi.metmuseum.org/public/collection/v1/objects?period&)
-//     .then() {
-//         // return response.json();
-//     })
-//     .then(function (data) {
-//         // //How do I do this 5 times?
-//         // var periodID = Math.floor(Math.random() * data.objectIDs.length)
-//         // var randomPeriod =  data.objectID[periodID]
-//         // cityArray.push(randomPeriod)
-
-//     })
-// document.getElementById("mediumArray").textContent = list[mediumID].button;
-// document.getElementById("periodArray").textContent = list[periodID].button;
-// document.getElementById("cityArray").textContent = list[cityID].button;
-
-//need to add button.textcontent.someArray[] to get the texts to display on the buttons
-
-searchButton.addEventListener("click", () => getAPI());
 
 function getAPI() {
     //Clearing Local Storage before the
