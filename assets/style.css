@@ -71,6 +71,7 @@ body {
  .infoCard {
     margin: auto;
     width: 50%;
+    height: auto;
     padding: 10px;
     position: relative;
   }
