@@ -46,10 +46,10 @@ body {
     .art-display
     {
       position: absolute;
-      top: 12%;
-      left: 38%;
-      height: 50%;
-      width: 45%;
+      top: 0%;
+      left: 0%;
+      height: auto;
+      width: fit-content;
       display: block;
       margin-left: auto;
       margin-right: auto;
