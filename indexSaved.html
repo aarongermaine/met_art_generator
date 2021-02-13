@@ -22,7 +22,7 @@
 
           <div class="dropdown is-hoverable">
             <div class="dropdown-trigger">
-              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2" onclick="artPeriod()">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
                 <span>Time Period</span>
                 <span class="icon is-small">
                   <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -36,19 +36,19 @@
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
-                  <button>Something</button>
+                  <button onclick="artPeriod('1400','1500')">1400-1500</button>
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
-                  <button>Something</button>
+                  <button onclick="artPeriod('1500','1600')">1500-1600</button>
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
-                  <button>Something</button>
+                  <button onclick="artPeriod('1600','1700')">1600-1700</button>
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
-                  <button>Something</button>
+                  <button onclick="artPeriod('1700','1800')">1700-1800</button>
                 </div>
               </div>
             </div>
@@ -56,7 +56,7 @@
 
           <div class="dropdown is-hoverable">
             <div class="dropdown-trigger">
-              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2" onclick="artMedium()">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
                 <span>Medium</span>
                 <span class="icon is-small">
                   <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -71,19 +71,19 @@
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
-                  <button>Something</button>
+                  <button onclick="artMedium('Clay')">Clay</button>
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
-                  <button>Something</button>
+                  <button onclick="artMedium('Silk')">Silk</button>
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
-                  <button>Something</button>
+                  <button onclick="artMedium('Ceramic')">Ceramic</button>
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
-                  <button>Something</button>
+                  <button onclick="artMedium('Limestone')">Limestone</button>
                 </div>
               </div>
             </div>
@@ -101,23 +101,23 @@
             <div class="dropdown-menu" id="dropdown-menu2" role="menu">
               <div class="dropdown-content">
                 <div class="dropdown-item">
-                  <button id="city-button">City</button>
+                  <button id="city-button" onclick="artCity('New York')">New York</button>
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
-                  <button>Something</button>
+                  <button onclick="artCity('Asia')">Asia</button>
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
-                  <button>Something</button>
+                  <button onclick="artCity('Japan')">Japan</button>
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
-                  <button>Something</button>
+                  <button onclick="artCity('Europe')">Europe</button>
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
-                  <button>Something</button>
+                  <button onclick="artCity('Paris')">Paris</button>
                 </div>
               </div>
             </div>
@@ -132,10 +132,11 @@
 
         <div class="column is-four-fifth displayColumn">
           <div>
-            <figure class="image is-50x50 frame">
+            <figure class="image is-4by5 frame">
               <img src="assets\pictures\frame.png" class="image-frame" />
+              <img src="" id="artDisplay" class="art-display" />
             </figure>
-            <div><img src="" id="artDisplay" class="art-display" /></div>
+
           </div>
 
           <div class="infoCard">
