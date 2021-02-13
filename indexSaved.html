@@ -18,11 +18,11 @@
         <div class="column is-one-fifth searchColumn">
           <textarea id="search-input" class="textarea" placeholder="1 line of textarea" rows="1"></textarea>
 
-          <input class="button" id="submit-button" type="submit" value="Search" onclick="getAPI()" />
+          <input class="button" id="submit-button" type="submit" value="Search" />
 
           <div class="dropdown is-hoverable">
             <div class="dropdown-trigger">
-              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2" onclick="artPeriod()">
                 <span>Time Period</span>
                 <span class="icon is-small">
                   <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -32,7 +32,7 @@
             <div class="dropdown-menu" id="dropdown-menu2" role="menu">
               <div class="dropdown-content">
                 <div class="dropdown-item">
-                  <button class="periodArray">Time Period</button>
+                  <button id="period-button" class="periodArray">Time Period</button>
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
@@ -56,7 +56,7 @@
 
           <div class="dropdown is-hoverable">
             <div class="dropdown-trigger">
-              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2" onclick="artMedium()">
                 <span>Medium</span>
                 <span class="icon is-small">
                   <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -67,7 +67,7 @@
               <div class="dropdown-content">
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
-                  <button>Medium</button>
+                  <button id="medium-button">Medium</button>
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
@@ -91,7 +91,7 @@
 
           <div class="dropdown is-hoverable">
             <div class="dropdown-trigger">
-              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2" onclick="artCity()">
                 <span>City</span>
                 <span class="icon is-small">
                   <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -101,7 +101,7 @@
             <div class="dropdown-menu" id="dropdown-menu2" role="menu">
               <div class="dropdown-content">
                 <div class="dropdown-item">
-                  <button>City</button>
+                  <button id="city-button">City</button>
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
@@ -132,35 +132,38 @@
             </figure>
             <div><img src="" id="artDisplay" class="art-display" /></div>
           </div>
-  
-            <div class="infoCard">
-              <img src="assets/pictures/whitePaper-1-1.jpg" />
-              <div class="artTitle cardInfo" id="artist-title"> 
-                Artwork Title
-              </div>
-              <div class="name cardInfo" id="artist-name"> 
-                Artist's Name
-              </div>
-              <div class="date cardInfo" id="artist-date"> 
-                Date art was made 
-              </div>
-              <div class="location otherInfo cardInfo" id="artist-location">
-                Location
-              </div>
-              <div class="cardInfo" id="art-medium"></div>
+
+          <div class="infoCard">
+            <img src="assets/pictures/whitePaper-1-1.jpg" />
+            <div class="artTitle cardInfo" id="artist-title">
+              Artwork Title
             </div>
-
+            <div class="name cardInfo" id="artist-name">
+              Artist's Name
+            </div>
+            <div class="date cardInfo" id="artist-date">
+              Date art was made
+            </div>
+            <div class="location otherInfo cardInfo" id="artist-location">
+              Location
+            </div>
             <div class="cardInfo" id="art-medium"></div>
-            <div class="cardInfo" id="art-learn"></div>
-
           </div>
+         <div class="cardInfo" id="art-medium">
         </div>
+        <div class="cardInfo" id="art-learn"></div>
+        <div class="cardInfo" id="art-medium"></div>
+        <div class="cardInfo" id="art-learn"></div>
 
+        
       </div>
+      <div class="info"></div>
+    </div>
+    </div>
 
-      <div class="mapLink">
-        <a href="visit.html"> Come Visit Us! </a>
-      </div>
+    <div class="mapLink">
+      <a href="visit.html"> Come Visit Us! </a>
+    </div>
     </div>
   </section>
 
