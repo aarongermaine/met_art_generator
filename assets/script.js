@@ -26,10 +26,12 @@ The results are displayed on the screen
  */
 var artistEl = document.getElementsByClassName("artist");
 var searchButton = document.getElementById("submit-button");
-
-var periodButton = document.getElementById("period-button")
-var mediumButton = document.getElementById("medium-button")
-var cityButton = document.getElementById("city-button")
+var previousOne = document.getElementById("prev-search-one");
+var previousTwo = document.getElementById("prev-search-two");
+var previousThree = document.getElementById("prev-search-three");
+var periodButton = document.getElementById("period-button");
+var mediumButton = document.getElementById("medium-button");
+var cityButton = document.getElementById("city-button");
 //var searchString = "";
 var objectIds = [];
 var objectID = 0;
@@ -80,38 +82,31 @@ function artDepartment(departmentID) {
         })
 
 }
-function artCity() {
 
-    console.log("I've been clicked Art City");
-    fetch('https://collectionapi.metmuseum.org//public/collection/v1/search?geoLocation=')
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-            for (i = 0; i < 5; i++) {
-                //var newButton = document.createElement("button");
-                newButton.textContent = random(data)
-                console.log(ppend(newButton));
-                // mediumButton.textContent=random(data);
-            }
-        })
-    //artPeriod();
+function searchAgain(value) {
+    console.log(value, typeof (value));
+    localStorage.clear("objectIDs");
+    var searchAgainObjID = localStorage.getItem("searchHist", searchHistory[value]);
+    localStorage.setItem("objectIDs", searchAgainObjID);
+
+    getDetails();
 }
-function artPeriod(peiod) {
+
+function artPeriod(periodStart, periodEnd) {
+    searchString = document.getElementById("search-input").value;
+    localStorage.clear("objectIDs");
     console.log("I've been clicked Art Period");
-    fetch('https://collectionapi.metmuseum.org/public/collection/v1/departments')
+    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?dateBegin=${periodStart}&dateEnd=${periodEnd}&q=${searchString}`)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
             console.log(data);
-            for (i = 0; i < 5; i++) {
-                var newButton = document.createElement("button");
-                newButton.textContent = random(data)
-                periodButton.append(newButton)
-                // mediumButton.textContent=random(data);
-            }
+            objectIds = data.objectIDs;
+            var choseID = Math.floor(Math.random() * objectIds.length);
+            localStorage.setItem("objectIDs", objectIds[choseID]);
+            getDetails();
+
         })
 }
 
@@ -124,11 +119,11 @@ function getAPI() {
     searchString = document.getElementById("search-input").value;
     console.log(searchString);
 
-    //console.log("I made it!!");
+
 
     //----------------pulled from POSTMAN-----------------------//
 
-    //---additional parameter added to only return object IDs that have images (would be silly to have facts without something pretty to show)---//
+
     fetch(
         `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImage=true&q=${searchString}`,
         requestOptions
@@ -177,11 +172,15 @@ function displayResults(data) {
     console.log(searchHistory);
     localStorage.setItem("searchHist", searchHistory);
 
+
     //adding titles to object ID array
     searchedTitles.unshift(data.title);
     searchedTitles.length = 3;
     console.log(searchedTitles);
     localStorage.setItem("titles", searchedTitles);
+    previousOne.textContent = searchedTitles[0];
+    previousTwo.textContent = searchedTitles[1];
+    previousThree.textContent = searchedTitles[2];
 
     console.log(data);
     var objectDate = data.objectDate;
