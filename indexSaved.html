@@ -18,11 +18,11 @@
         <div class="column is-one-fifth searchColumn">
           <textarea id="search-input" class="textarea" placeholder="1 line of textarea" rows="1"></textarea>
 
-          <input class="button" id="submit-button" type="submit" value="Search" onclick="getAPI()" />
+          <input class="button" id="submit-button" type="submit" value="Search" />
 
           <div class="dropdown is-hoverable">
             <div class="dropdown-trigger">
-              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2" onclick="artPeriod()">
                 <span>Time Period</span>
                 <span class="icon is-small">
                   <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -56,7 +56,7 @@
 
           <div class="dropdown is-hoverable">
             <div class="dropdown-trigger">
-              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2" onclick="artMedium()">
                 <span>Medium</span>
                 <span class="icon is-small">
                   <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -91,7 +91,7 @@
 
           <div class="dropdown is-hoverable">
             <div class="dropdown-trigger">
-              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2" onclick="artCity()">
                 <span>City</span>
                 <span class="icon is-small">
                   <i class="fas fa-angle-down" aria-hidden="true"></i>

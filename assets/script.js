@@ -25,7 +25,7 @@ The results are displayed on the screen
 
  */
 var artistEl = document.getElementsByClassName("artist");
-var searchButton = document.getElementById("search-button");
+var searchButton = document.getElementById("submit-button");
 
 var periodButton = document.getElementById("period-button")
 var mediumButton = document.getElementById("medium-button")
@@ -63,11 +63,12 @@ function random(array) {
 }
 function artMedium() {
     console.log("I've been clicked Art Medium");
-    fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects?medium&')
+    fetch('https://collectionapi.metmuseum.org//public/collection/v1/search?medium=')
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
+            console.log(data);
             for (i = 0; i < 5; i++) {
                 var newButton = document.createElement("button");
                 // var newDiv = document.createElement("div");
@@ -107,11 +108,12 @@ function artCity() {
 }
 function artPeriod() {
     console.log("I've been clicked Art Period");
-    fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects?period&')
+    fetch('https://collectionapi.metmuseum.org//public/collection/v1/search?q=')
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
+            console.log(data);
             for (i = 0; i < 5; i++) {
                 var newButton = document.createElement("button");
                 newButton.textContent = random(data)
