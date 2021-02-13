@@ -69,11 +69,10 @@ body {
   }
 
  .infoCard {
-    float: left;
+    margin: auto;
+    width: 70%;
+    padding: 10px;
     position: relative;
-    margin: 15px;
-    margin-left: 10%;
-    margin-right: 10%;
   }
 
   .artTitle {
