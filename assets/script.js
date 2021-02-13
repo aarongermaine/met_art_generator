@@ -41,6 +41,7 @@ var searchedMedium = [];
 var mediumArray = [];
 var cityArray = [];
 var periodArray = [];
+var searchAgainObjID = [];
 var myHeaders = new Headers();
 myHeaders.append(
     "Cookie",
@@ -64,6 +65,7 @@ function random(array) {
     var randomElement = array[randomIndex];
     return randomElement;
 }
+
 function artDepartment(departmentID) {
     searchString = document.getElementById("search-input").value;
     localStorage.clear("objectIDs");
@@ -73,22 +75,20 @@ function artDepartment(departmentID) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+
             objectIds = data.objectIDs;
             var choseID = Math.floor(Math.random() * objectIds.length);
             localStorage.setItem("objectIDs", objectIds[choseID]);
             getDetails();
-
         })
-
 }
 
 function searchAgain(value) {
     console.log(value, typeof (value));
-    localStorage.clear("objectIDs");
-    console.log(searchHistory[value]);
-    //var searchAgainObjID = localStorage.getItem("searchHist", searchHistory[value]);
-    localStorage.setItem("objectIDs", searchAgainObjID);
+    //localStorage.clear("objectIDs");
+    searchAgainObjID = searchHistory[value];
+    console.log(searchAgainObjID);
+    //localStorage.setItem("objectIDs", searchAgainObjID);
 
     getDetails();
 }
@@ -96,13 +96,13 @@ function searchAgain(value) {
 function artPeriod(periodStart, periodEnd) {
     searchString = document.getElementById("search-input").value;
     localStorage.clear("objectIDs");
-    console.log("I've been clicked Art Period");
+
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?dateBegin=${periodStart}&dateEnd=${periodEnd}&q=${searchString}`)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+
             objectIds = data.objectIDs;
             var choseID = Math.floor(Math.random() * objectIds.length);
             localStorage.setItem("objectIDs", objectIds[choseID]);
@@ -118,8 +118,6 @@ function getAPI() {
     localStorage.clear("objectIDs");
 
     searchString = document.getElementById("search-input").value;
-    console.log(searchString);
-
 
 
     //----------------pulled from POSTMAN-----------------------//
@@ -133,7 +131,7 @@ function getAPI() {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            //console.log(data);
             objectIds = data.objectIDs;
             var choseID = Math.floor(Math.random() * objectIds.length);
             //console.log(objectIds[choseID]);
@@ -183,7 +181,7 @@ function displayResults(data) {
     previousTwo.textContent = searchedTitles[1];
     previousThree.textContent = searchedTitles[2];
 
-    console.log(data);
+    //console.log(data);
     var objectDate = data.objectDate;
     //console.log(objectDate);
 
@@ -191,7 +189,7 @@ function displayResults(data) {
     var locationInMuseum = data.GalleryNumber;
     //console.log(locationInMuseum);
     var periodType = data.period;
-    console.log(periodType);
+    //console.log(periodType);
 
     //var periodEl = document.getElementById("art-period");
     //periodEl.innerHTML = `This is from the ${periodType} period`;
@@ -220,7 +218,7 @@ function displayResults(data) {
         image = document.getElementById("artDisplay");
         image.src = imageURL;
 
-        console.log(image.src);
+        //console.log(image.src);
     }
     displayImage();
 
