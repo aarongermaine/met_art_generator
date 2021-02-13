@@ -68,7 +68,7 @@ function random(array) {
 
 function artDepartment(departmentID) {
     searchString = document.getElementById("search-input").value;
-    localStorage.clear("objectIDs");
+    localStorage.removeItem("objectIDs");
 
     fetch(
         `https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=${departmentID}&q=${searchString}`
@@ -77,7 +77,7 @@ function artDepartment(departmentID) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            //console.log(data);
             objectIds = data.objectIDs;
             var choseID = Math.floor(Math.random() * objectIds.length);
             localStorage.setItem("objectIDs", objectIds[choseID]);
@@ -87,20 +87,18 @@ function artDepartment(departmentID) {
 
 function searchAgain(value) {
     console.log(value, typeof value);
-    localStorage.clear("objectIDs");
-    var searchAgainObjID = localStorage.getItem(
-        "searchHist",
-        searchHistory[value]
-    );
-    localStorage.setItem("objectIDs", searchAgainObjID);
+    //localStorage.clear("objectIDs");
+    var searchAgainObjID = localStorage.getItem("searchHist");
+    console.log(searchAgainObjID[value]);
+    //localStorage.setItem("objectIDs", searchAgainObjID);
 
     getDetails();
 }
 
 function artPeriod(periodStart, periodEnd) {
     searchString = document.getElementById("search-input").value;
-    localStorage.clear("objectIDs");
-    console.log("I've been clicked Art Period");
+    localStorage.removeItem("objectIDs");
+    //console.log("I've been clicked Art Period");
     fetch(
         `https://collectionapi.metmuseum.org/public/collection/v1/search?dateBegin=${periodStart}&dateEnd=${periodEnd}&q=${searchString}`
     )
@@ -108,7 +106,7 @@ function artPeriod(periodStart, periodEnd) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            //console.log(data);
             objectIds = data.objectIDs;
             var choseID = Math.floor(Math.random() * objectIds.length);
             localStorage.setItem("objectIDs", objectIds[choseID]);
@@ -118,10 +116,10 @@ function artPeriod(periodStart, periodEnd) {
 
 function getAPI() {
     //Clearing Local Storage before the
-    localStorage.clear("objectIDs");
+    localStorage.removeItem("objectIDs");
 
     searchString = document.getElementById("search-input").value;
-    console.log(searchString);
+    //console.log(searchString);
 
     //----------------pulled from POSTMAN-----------------------//
 
@@ -133,7 +131,7 @@ function getAPI() {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            //console.log(data);
             objectIds = data.objectIDs;
             var choseID = Math.floor(Math.random() * objectIds.length);
             //console.log(objectIds[choseID]);
@@ -169,13 +167,13 @@ function displayResults(data) {
     //adding object ID to search history array so it can be searched again
     searchHistory.unshift(objectID);
     searchHistory.length = 3;
-    console.log(searchHistory);
+    //console.log(searchHistory);
     localStorage.setItem("searchHist", searchHistory);
 
     //adding titles to object ID array
     searchedTitles.unshift(data.title);
     searchedTitles.length = 3;
-    console.log(searchedTitles);
+    //console.log(searchedTitles);
     localStorage.setItem("titles", searchedTitles);
     previousOne.textContent = searchedTitles[0];
     previousTwo.textContent = searchedTitles[1];
@@ -189,7 +187,7 @@ function displayResults(data) {
     var locationInMuseum = data.GalleryNumber;
     //console.log(locationInMuseum);
     var periodType = data.period;
-    console.log(periodType);
+    //console.log(periodType);
 
     //var periodEl = document.getElementById("art-period");
     //periodEl.innerHTML = `This is from the ${periodType} period`;
@@ -216,7 +214,7 @@ function displayResults(data) {
         image = document.getElementById("artDisplay");
         image.src = imageURL;
 
-        console.log(image.src);
+        //console.log(image.src);
     }
     displayImage();
 
