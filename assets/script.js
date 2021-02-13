@@ -52,9 +52,9 @@ var requestOptions = {
 
 //-----------EVENT LISTENER TO CALL GET API FUNCTION-----------------//
 searchButton.addEventListener("click", () => getAPI());
-mediumButton.addEventListener("click", () => artMedium());
-periodButton.addEventListener("click", () => artPeriod());
-cityButton.addEventListener("click", () => artCity());
+//mediumButton.addEventListener("click", () => artMedium());
+//periodButton.addEventListener("click", () => artPeriod());
+//cityButton.addEventListener("click", () => artCity());
 
 //Create a function that generates a random index from particular array
 function random(array) {
@@ -62,37 +62,26 @@ function random(array) {
     var randomElement = array[randomIndex];
     return randomElement;
 }
-function artMedium() {
-    console.log("I've been clicked Art Medium");
+function artDepartment(departmentID) {
     searchString = document.getElementById("search-input").value;
-    console.log(searchString);
-    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?medium=${medium}&q=${searchString}`)
+    localStorage.clear("objectIDs");
+
+    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=${departmentID}&q=${searchString}`)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
             console.log(data);
-            for (i = 0; i < 5; i++) {
-                var newButton = document.createElement("button");
-                // var newDiv = document.createElement("div");
-                //newDiv.innerHTML= (how to add html elements dynamically
-                // var newButton = document.createElement("button");
-                // newButton.textContent=random(data)
-                // newDiv.append(newButton)
-                //var dropDownElement = document.getElementById("dropdown-menu2")
-                //dropDownElement.append(newDiv);
-                newButton.textContent = random(data)
-                mediumButton.append(newButton)
-                // mediumButton.textContent=random(data);
-            }
-            // var mediumID = Math.floor(Math.random() * data.objectsID.length)
-            // var randomMedium = data.objectsID[mediumID]
-            // mediumArray.push(randomMedium)
-            console.log(randomMedium);
+            objectIds = data.objectIDs;
+            var choseID = Math.floor(Math.random() * objectIds.length);
+            localStorage.setItem("objectIDs", objectIds[choseID]);
+            getDetails();
+
         })
-    //artCity();
+
 }
 function artCity() {
+
     console.log("I've been clicked Art City");
     fetch('https://collectionapi.metmuseum.org//public/collection/v1/search?geoLocation=')
         .then(function (response) {
@@ -109,7 +98,7 @@ function artCity() {
         })
     //artPeriod();
 }
-function artPeriod() {
+function artPeriod(peiod) {
     console.log("I've been clicked Art Period");
     fetch('https://collectionapi.metmuseum.org/public/collection/v1/departments')
         .then(function (response) {
@@ -194,11 +183,6 @@ function displayResults(data) {
     console.log(searchedTitles);
     localStorage.setItem("titles", searchedTitles);
 
-
-    searchedMedium.unshift(data.medium);
-    console.log(searchedMedium);
-    localStorage.setItem("medium", searchedMedium);
-
     console.log(data);
     var objectDate = data.objectDate;
     //console.log(objectDate);
@@ -207,11 +191,12 @@ function displayResults(data) {
     var locationInMuseum = data.GalleryNumber;
     //console.log(locationInMuseum);
     var periodType = data.period;
-    if (periodType !== "") {
-        var periodEl = document.getElementById("art-period");
-        periodEl.innerHTML = `This is from the ${periodType} period`;
-        console.log(periodType);
-    };
+    console.log(periodType);
+
+    //var periodEl = document.getElementById("art-period");
+    //periodEl.innerHTML = `This is from the ${periodType} period`;
+
+
 
     var artistName = data.artistDisplayName;
     artistEl.textContent = artistName;
@@ -225,7 +210,8 @@ function displayResults(data) {
     learnEl.innerHTML = `<a href="${learnMore} target="_blank">Click here to learn more about this work or art!</a>`;
     //console.log(learnMore);
     var imageURL = data.primaryImageSmall;
-    console.log(imageURL);
+    //console.log(imageURL);
+
     var medium = data.medium;
     mediumEl = document.getElementById("art-medium");
     mediumEl.innerHTML = `Artwork Medium: ${medium}`;
