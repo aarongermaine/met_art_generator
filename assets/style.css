@@ -56,11 +56,14 @@ body {
     }
 
   .mapLink {
-    padding-bottom: 20px;
-    position: absolute;
+    color: white;
+    /* padding-bottom: 20px; */
+    /* position: absolute; */
+    padding: 5px;
+    background-color: white;
     font-size: 20px;
-    margin-top: 20px;
-    left: 10%;
+    /* margin-top: 20px;
+    left: 10%; */
   }
 
   .frame {
