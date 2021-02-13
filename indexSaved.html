@@ -89,8 +89,8 @@
 
           <div class="dropdown is-hoverable">
             <div class="dropdown-trigger">
-              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2" onclick="artCity()'France')">
-                <span>City</span>
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+                <span>Previous Results</span>
                 <span class="icon is-small">
                   <i class="fas fa-angle-down" aria-hidden="true"></i>
                 </span>
@@ -100,24 +100,17 @@
             <div class="dropdown-menu" id="dropdown-menu2" role="menu">
               <div class="dropdown-content">
                 <div class="dropdown-item">
-                  <button id="city-button" onclick="artCity('New York')">New York</button>
+                  <button id="prev-search-one" onclick="searchAgain('0')"></button>
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
-                  <button onclick="artCity('Asia')">Asia</button>
+                  <button id="prev-search-two" onclick="searchAgain('1')"></button>
                 </div>
                 <hr class="dropdown-divider" />
                 <div class="dropdown-item">
-                  <button onclick="artCity('Japan')">Japan</button>
+                  <button id="prev-search-three" onclick="searchAgain('2')"></button>
                 </div>
-                <hr class="dropdown-divider" />
-                <div class="dropdown-item">
-                  <button onclick="artCity('Europe')">Europe</button>
-                </div>
-                <hr class="dropdown-divider" />
-                <div class="dropdown-item">
-                  <button onclick="artCity('Paris')">Paris</button>
-                </div>
+
               </div>
             </div>
           </div>
