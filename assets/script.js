@@ -86,11 +86,17 @@ function artDepartment(departmentID) {
 }
 
 function searchAgain(value) {
-    console.log(value, typeof value);
-    //localStorage.clear("objectIDs");
-    var searchAgainObjID = localStorage.getItem("searchHist");
-    console.log(searchAgainObjID[value]);
-    //localStorage.setItem("objectIDs", searchAgainObjID);
+    /**
+     * WHen i hover over the previous search list i am able to click on a prior search
+     * once i click on the search, we pull the object ID associated iwth the prior search and requery the details
+     */
+    localStorage.removeItem("objectIDs");
+
+    searchAgainObjID = localStorage.getItem("searchHist");
+    searchedMedium = searchAgainObjID.split(",");
+
+
+    localStorage.setItem("objectIDs", searchedMedium[value]);
 
     getDetails();
 }
