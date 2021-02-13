@@ -35,6 +35,7 @@ var objectIds = [];
 var objectID = 0;
 var searchHistory = [];
 var searchedTitles = [];
+var searchedMedium = [];
 var mediumArray = [];
 var cityArray = [];
 var periodArray = [];
@@ -63,7 +64,9 @@ function random(array) {
 }
 function artMedium() {
     console.log("I've been clicked Art Medium");
-    fetch('https://collectionapi.metmuseum.org//public/collection/v1/search?medium=')
+    searchString = document.getElementById("search-input").value;
+    console.log(searchString);
+    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?medium=${medium}&q=${searchString}`)
         .then(function (response) {
             return response.json();
         })
@@ -108,7 +111,7 @@ function artCity() {
 }
 function artPeriod() {
     console.log("I've been clicked Art Period");
-    fetch('https://collectionapi.metmuseum.org//public/collection/v1/search?q=')
+    fetch('https://collectionapi.metmuseum.org/public/collection/v1/departments')
         .then(function (response) {
             return response.json();
         })
@@ -132,7 +135,8 @@ function getAPI() {
     searchString = document.getElementById("search-input").value;
     console.log(searchString);
 
-    console.log("I made it!!");
+    //console.log("I made it!!");
+
     //----------------pulled from POSTMAN-----------------------//
 
     //---additional parameter added to only return object IDs that have images (would be silly to have facts without something pretty to show)---//
@@ -157,7 +161,7 @@ function getAPI() {
 
 function getDetails() {
     objectID = parseInt(localStorage.getItem("objectIDs"));
-    console.log(objectID);
+    //console.log(objectID);
 
     //with additional search parameter - add if statement to identify whether or not department ID
 
@@ -190,17 +194,10 @@ function displayResults(data) {
     console.log(searchedTitles);
     localStorage.setItem("titles", searchedTitles);
 
-    //adding object ID to search history array so it can be searched again
-    searchHistory.unshift(objectID);
-    searchHistory.length = 3;
-    console.log(searchHistory);
-    localStorage.setItem("searchHist", searchHistory);
 
-    //adding titles to object ID array
-    searchedTitles.unshift(data.title);
-    searchedTitles.length = 3;
-    console.log(searchedTitles);
-    localStorage.setItem("titles", searchedTitles);
+    searchedMedium.unshift(data.medium);
+    console.log(searchedMedium);
+    localStorage.setItem("medium", searchedMedium);
 
     console.log(data);
     var objectDate = data.objectDate;
@@ -210,7 +207,7 @@ function displayResults(data) {
     var locationInMuseum = data.GalleryNumber;
     //console.log(locationInMuseum);
     var periodType = data.period;
-    if (!periodType) {
+    if (periodType !== "") {
         var periodEl = document.getElementById("art-period");
         periodEl.innerHTML = `This is from the ${periodType} period`;
         console.log(periodType);
