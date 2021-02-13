@@ -86,7 +86,8 @@ function artDepartment(departmentID) {
 function searchAgain(value) {
     console.log(value, typeof (value));
     localStorage.clear("objectIDs");
-    var searchAgainObjID = localStorage.getItem("searchHist", searchHistory[value]);
+    console.log(searchHistory[value]);
+    //var searchAgainObjID = localStorage.getItem("searchHist", searchHistory[value]);
     localStorage.setItem("objectIDs", searchAgainObjID);
 
     getDetails();
