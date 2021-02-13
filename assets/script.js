@@ -70,25 +70,29 @@ function artDepartment(departmentID) {
     searchString = document.getElementById("search-input").value;
     localStorage.clear("objectIDs");
 
-    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=${departmentID}&q=${searchString}`)
+    fetch(
+        `https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=${departmentID}&q=${searchString}`
+    )
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-
+            console.log(data);
             objectIds = data.objectIDs;
             var choseID = Math.floor(Math.random() * objectIds.length);
             localStorage.setItem("objectIDs", objectIds[choseID]);
             getDetails();
-        })
+        });
 }
 
 function searchAgain(value) {
-    console.log(value, typeof (value));
-    //localStorage.clear("objectIDs");
-    searchAgainObjID = searchHistory[value];
-    console.log(searchAgainObjID);
-    //localStorage.setItem("objectIDs", searchAgainObjID);
+    console.log(value, typeof value);
+    localStorage.clear("objectIDs");
+    var searchAgainObjID = localStorage.getItem(
+        "searchHist",
+        searchHistory[value]
+    );
+    localStorage.setItem("objectIDs", searchAgainObjID);
 
     getDetails();
 }
@@ -96,32 +100,30 @@ function searchAgain(value) {
 function artPeriod(periodStart, periodEnd) {
     searchString = document.getElementById("search-input").value;
     localStorage.clear("objectIDs");
-
-    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?dateBegin=${periodStart}&dateEnd=${periodEnd}&q=${searchString}`)
+    console.log("I've been clicked Art Period");
+    fetch(
+        `https://collectionapi.metmuseum.org/public/collection/v1/search?dateBegin=${periodStart}&dateEnd=${periodEnd}&q=${searchString}`
+    )
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-
+            console.log(data);
             objectIds = data.objectIDs;
             var choseID = Math.floor(Math.random() * objectIds.length);
             localStorage.setItem("objectIDs", objectIds[choseID]);
             getDetails();
-
-        })
+        });
 }
-
-
 
 function getAPI() {
     //Clearing Local Storage before the
     localStorage.clear("objectIDs");
 
     searchString = document.getElementById("search-input").value;
-
+    console.log(searchString);
 
     //----------------pulled from POSTMAN-----------------------//
-
 
     fetch(
         `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImage=true&q=${searchString}`,
@@ -131,7 +133,7 @@ function getAPI() {
             return response.json();
         })
         .then(function (data) {
-            //console.log(data);
+            console.log(data);
             objectIds = data.objectIDs;
             var choseID = Math.floor(Math.random() * objectIds.length);
             //console.log(objectIds[choseID]);
@@ -164,13 +166,11 @@ function getDetails() {
 }
 
 function displayResults(data) {
-
     //adding object ID to search history array so it can be searched again
     searchHistory.unshift(objectID);
     searchHistory.length = 3;
     console.log(searchHistory);
     localStorage.setItem("searchHist", searchHistory);
-
 
     //adding titles to object ID array
     searchedTitles.unshift(data.title);
@@ -181,7 +181,7 @@ function displayResults(data) {
     previousTwo.textContent = searchedTitles[1];
     previousThree.textContent = searchedTitles[2];
 
-    //console.log(data);
+    console.log(data);
     var objectDate = data.objectDate;
     //console.log(objectDate);
 
@@ -189,23 +189,21 @@ function displayResults(data) {
     var locationInMuseum = data.GalleryNumber;
     //console.log(locationInMuseum);
     var periodType = data.period;
-    //console.log(periodType);
+    console.log(periodType);
 
     //var periodEl = document.getElementById("art-period");
     //periodEl.innerHTML = `This is from the ${periodType} period`;
-
-
 
     var artistName = data.artistDisplayName;
     artistEl.textContent = artistName;
     //console.log(artistName);
     var workTitle = data.title;
-    //console.log(workTitle);git 
+    //console.log(workTitle);git
     var rightsReproduction = data.rightsAndReproduction;
     //console.log(rightsReproduction);
-    var learnMore = data.objectWikidata_URL;
+    var learnMore = data.objectURL;
     var learnEl = document.getElementById("art-learn");
-    learnEl.innerHTML = `<a href="${learnMore} target="_blank">Click here to learn more about this work or art!</a>`;
+    learnEl.innerHTML = `<a href="${learnMore}" target="_blank">Click here to learn more about this work or art!</a>`;
     //console.log(learnMore);
     var imageURL = data.primaryImageSmall;
     //console.log(imageURL);
@@ -218,7 +216,7 @@ function displayResults(data) {
         image = document.getElementById("artDisplay");
         image.src = imageURL;
 
-        //console.log(image.src);
+        console.log(image.src);
     }
     displayImage();
 
@@ -231,7 +229,6 @@ function displayResults(data) {
     function displayName() {
         artist = document.getElementById("artist-name");
         artist.innerHTML = `Artist Name: ${artistName}`;
-
     }
     displayName();
 
@@ -243,8 +240,7 @@ function displayResults(data) {
 
     function displayLoc() {
         artistLocation = document.getElementById("artist-location");
-        artistLocation.innerHTML = `<a href="https://maps.metmuseum.org/galleries/fifth-ave/2/${locationInMuseum} target="_blank">Click here to where this is located</a>`;
+        artistLocation.innerHTML = `<a href="https://maps.metmuseum.org/galleries/fifth-ave/2/${locationInMuseum}" target="_blank">Click here to where this is located</a>`;
     }
     displayLoc();
-
 }
