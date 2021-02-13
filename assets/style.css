@@ -132,7 +132,13 @@ body {
  }
   
 .dropdown {
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
+}
+
+#submit-button {
+  margin-bottom: 3px;
+}
+
+#search-input {
+  margin-bottom: 3px;
 }
