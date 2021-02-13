@@ -77,39 +77,44 @@ body {
 
   .artTitle {
     position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 10%;
+    text-align: center;
+    margin:auto;
+    width:70%;
   }
 
   .name {
     position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 25%;
+    text-align: center;
+    margin:auto;
+    width:70%;
   }
 
   .date {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 40%;
+    text-align: center;
+    margin:auto;
+    width:70%;
   }
 
   .location {
     position: absolute; 
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 55%;
+    text-align: center;
+    margin:auto;
+    width:70%;
   }
 
   .art-medium {
     position: absolute;
-    top:80%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top:70%;
+    text-align: center;
+    margin:auto;
+    width:70%;
   }
-  
+
   .info {
     margin: 15px;
   }
