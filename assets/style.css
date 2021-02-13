@@ -80,40 +80,40 @@ body {
     position: absolute; 
     top: 10%;
     text-align: center;
-    margin:auto;
-    width:100%;
+    margin:5px;
+    width:95%;
   }
 
   .name {
     position: absolute; 
     top: 25%;
     text-align: center;
-    margin:auto;
-    width:100%;
+    margin:5px;
+    width:95%;
   }
 
   .date {
     position: absolute;
     top: 40%;
     text-align: center;
-    margin:auto;
-    width:100%;
+    margin:5px;
+    width:95%;
   }
 
   .location {
     position: absolute; 
     top: 55%;
     text-align: center;
-    margin:auto;
-    width: 100%;
+    margin:5px;
+    width:95%;
   }
 
   .art-medium {
     position: absolute;
     top:70%;
     text-align: center;
-    margin:auto;
-    width:100%;
+    margin:5px;
+    width:95%;
   }
 
   .info {
