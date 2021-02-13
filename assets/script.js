@@ -80,38 +80,33 @@ function artDepartment(departmentID) {
         })
 
 }
-function artCity() {
 
+function artCity(city) {
+    searchString = document.getElementById("search-input").value;
     console.log("I've been clicked Art City");
-    fetch('https://collectionapi.metmuseum.org//public/collection/v1/search?geoLocation=')
+    fetch(`https://collectionapi.metmuseum.org//public/collection/v1/search?geoLocation=${city}&q=${searchString}`)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
             console.log(data);
-            for (i = 0; i < 5; i++) {
-                //var newButton = document.createElement("button");
-                newButton.textContent = random(data)
-                console.log(ppend(newButton));
-                // mediumButton.textContent=random(data);
-            }
+            objectIds = data.objectIDs;
+            var choseID = Math.floor(Math.random() * objectIds.length);
+            localStorage.setItem("objectIDs", objectIds[choseID]);
+            getDetails();
         })
-    //artPeriod();
+
 }
-function artPeriod(peiod) {
+function artPeriod(periodStart, periodEnd) {
+    searchString = document.getElementById("search-input").value;
     console.log("I've been clicked Art Period");
-    fetch('https://collectionapi.metmuseum.org/public/collection/v1/departments')
+    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?dateBegin=${periodStart}&dateEnd=${periodEnd}&q=${searchString}`)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
             console.log(data);
-            for (i = 0; i < 5; i++) {
-                var newButton = document.createElement("button");
-                newButton.textContent = random(data)
-                periodButton.append(newButton)
-                // mediumButton.textContent=random(data);
-            }
+
         })
 }
 
