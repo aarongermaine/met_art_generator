@@ -28,8 +28,10 @@ body {
     background-color: darkgray;
     padding: 50px;
     margin: 5px;
+    margin-bottom: 20px;
     border: darkslategrey;
     border-style: solid; 
+    min-width: 225px;
   }
 
   .displayColumn {
@@ -40,91 +42,46 @@ body {
     .image-frame
     {
       position: relative;
-      top: 0;
-      left: 0;
       z-index: 1;
     }
     .art-display
     {
       position: absolute;
-      top: 0%;
-      left: 0%;
-      height: auto;
-      width: fit-content;
+      max-height: 68%;
+      max-width: 68%;
       display: block;
-      margin-left: auto;
-      margin-right: auto;
+      margin: auto;
     }
 
   .mapLink {
     color: white;
     padding: 5px;
+    width: 150px;
     background-color: white;
-    font-size: 20px;
+    font-size: 18px;
+    margin: 3px;
+    margin-left: -25px;
   }
 
   .frame {
     margin-top: -50px;
-    position: relative;
   }
 
  .infoCard {
+    background-image: url("./pictures/whitePaper.jpg") ;
     margin: auto;
-    width: 50%;
+    margin-top: 20px;
+    width: 65%;
     height: auto;
     padding: 10px;
-    position: relative;
+    min-height: 200px;
   }
 
-  .artTitle {
-    position: absolute; 
-    top: 10%;
+  .cardInfo {
     text-align: center;
-    margin:5px;
-    width:95%;
+    margin: 5px; 
+    width: 95%;
   }
-
-  .name {
-    position: absolute; 
-    top: 25%;
-    text-align: center;
-    margin:5px;
-    width:95%;
-  }
-
-  .date {
-    position: absolute;
-    top: 40%;
-    text-align: center;
-    margin:5px;
-    width:95%;
-  }
-
-  .location {
-    position: absolute; 
-    top: 55%;
-    text-align: center;
-    margin:5px;
-    width:95%;
-  }
-
-  .art-medium {
-    position: absolute;
-    top:70%;
-    text-align: center;
-    margin:5px;
-    width:95%;
-  }
-
-  .info {
-    margin: 15px;
-  }
-
-  #map-this{
-      position:absolute;
-      left:50%;
-      
-    }
 
   button {
     background-color: white; 
@@ -137,13 +94,19 @@ body {
  }
   
 .dropdown {
-  margin-bottom: 3px;
+  margin: 3px;
+  margin-left: -25px;
+  margin-right:30px;
 }
 
 #submit-button {
-  margin-bottom: 3px;
+  margin: 3px;
+  margin-left: -25px;
 }
 
 #search-input {
-  margin-bottom: 3px;
+  margin: 3px;
+  margin-left: -25px;
+  max-width: 200px;
+  min-width: 150px;
 }
