@@ -2,16 +2,16 @@
 [Production Link](https://aarongermaine.github.io/group_project/)
 
 ## Table of Contents
-*[Production Link](#Met-Art-Generator)
-*[User Story](##User-Story)
-*[Description](##Description)
-*[Mock Up](##Mock-Up)
-*[Usage](##Usage)
-*[Installation](##Installation)
-*[Refelctions](##Reflections)
-*[Contributors](##Contributors)
-*[Credits](##Credits)
-*[License](###License-?)
+    *[Production Link](#Met-Art-Generator)
+    *[User Story](##User-Story)
+    *[Description](##Description)
+    *[Mock Up](##Mock-Up)
+    *[Usage](##Usage)
+    *[Installation](##Installation)
+    *[Refelctions](##Reflections)
+    *[Contributors](##Contributors)
+    *[Credits](##Credits)
+    *[License](###License-?)
 
 ## User Story 
 As an art enthusiast, I want to be able to have art randomly generated for me to look at and enjoy. 
@@ -23,7 +23,7 @@ The met art generator provides randomly generated art based on the user's search
 
 
 ## Usage
-Open the [Met Art Generator](https://aarongermaine.github.io/group_project/) in your favorite browser. Once the page is loaded, choose your search parameters for your art work from the provided drop down menus. Don't see what you're looking for? Enter your search criteria into the provided search bar instead! Once your criteria has been processed, a piece of art from the Met will hang in the golden grame. Additionally, the information card will be filled out with all the ??? words about the piece. If you are wanting to find this piece in the <strong> actual </strong> Met, follow the provided link to see where it hangs in the museum. Want to learn more about the Met itself, or perhaps swing by for a visit? Follow the [Come Visit Us!](<a> Come Visit Us </a>) link. There you will find a brief history of the musuem and an interactive map to show you where to go. 
+Open the [Met Art Generator](https://aarongermaine.github.io/group_project/) in your favorite browser. Once the page is loaded, choose your search parameters for your art work from the provided drop down menus. Don't see what you're looking for? Enter your search criteria into the provided search bar instead! Once your criteria has been processed, a piece of art from the Met will hang in the golden grame. Additionally, the information card will be filled out with all the ??? words about the piece. If you are wanting to find this piece in the <strong> actual </strong> Met, follow the provided link to see where it hangs in the museum. Want to learn more about the Met itself, or perhaps swing by for a visit? Follow the [Come Visit Us!](https://aarongermaine.github.io/group_project/visit.html) link. There you will find a brief history of the musuem and an interactive map to show you where to go. 
 
 ## Installation 
 This application will work on all current browsers.
