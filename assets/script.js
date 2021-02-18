@@ -137,11 +137,6 @@ function displayResults(data) {
     var date = document.getElementById("artist-date");
     date.innerHTML = `Work Created on/around: ${objectDate}`;
 
-    //---handling where in the met the artwork is---//
-    // var locationInMuseum = data.GalleryNumber;
-    // var artistLocation = document.getElementById("artist-location");
-    // artistLocation.innerHTML = `<a href="https://maps.metmuseum.org/galleries/fifth-ave/2/${locationInMuseum}" target="_blank">Click here to where this is located</a>`;
-
     //---handling the artist name---//
     var artistName = data.artistDisplayName;
     var artist = document.getElementById("artist-name");
