@@ -18,6 +18,7 @@ var cityArray = [];
 var periodArray = [];
 var searchAgainObjID = [];
 var myHeaders = new Headers();
+var searchString = "";
 myHeaders.append(
     "Cookie",
     "incap_ses_208_1662004=wtUiUDkio3mJwBg7C/fiAsPsHWAAAAAAHxEusp5NdaZhKLNQkhNvkw==; visid_incap_1662004=yWfsog6jQna1Q6+jh2eZPSBmG2AAAAAAQUIPAAAAAADi+cYxvBpgB+yJk2PSo8a7"
@@ -36,6 +37,11 @@ function artDepartment(departmentID) {
     searchString = document.getElementById("search-input").value;
     localStorage.removeItem("objectIDs");
 
+    if(searchString = ""){
+        error.style.visibility = "visible";
+
+    }else{
+
     fetch(
         `https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=${departmentID}&q=${searchString}`
     )
@@ -49,6 +55,7 @@ function artDepartment(departmentID) {
             localStorage.setItem("objectIDs", objectIds[choseID]);
             getDetails();
         });
+    }
 };
 //-----THIS FUNCTION IS USED FOR PREVIOUSLY SEARCHED WORKS OF ART. ONCE CALLED IT WILL CLEAR THE PREVIOUSLY SEARCHED OBJECT ID AND THEN PULLS THE OBJECT ID FROM LOCAL STORAGE----//
 function searchAgain(value) {
@@ -63,9 +70,9 @@ function searchAgain(value) {
 function artPeriod(periodStart, periodEnd) {
     searchString = document.getElementById("search-input").value;
     localStorage.removeItem("objectIDs");
-
+    
     fetch(
-        `https://collectionapi.metmuseum.org/public/collection/v1/search?dateBegin=${periodStart}&dateEnd=${periodEnd}&q=${searchString}`
+        `https://collectionapi.metmuseum.org/public/collection/v1/search?dateBegin=${periodStart}&dateEnd=${periodEnd}${searchStringCall}`
     )
         .then(function (response) {
             return response.json();
@@ -84,6 +91,11 @@ function getAPI() {
     localStorage.removeItem("objectIDs");
     searchString = document.getElementById("search-input").value;
 
+    // if(searchString = ""){
+    //     textarea.innerHTML = "Please enter something here :)"
+    // }
+    // else
+    // {
     fetch(
         `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImage=true&q=${searchString}`,
         requestOptions
@@ -98,6 +110,7 @@ function getAPI() {
             getDetails();
         })
         .catch((error) => console.log("error", error));
+    // }
 }
 
 //---THIS FUNCTION SEARCHES FOR DETAILS ON ARTWORK BASED ON AN OBJECT ID STORED IN LOCAL STORAGE AND THEN CALLS THE displayResults FUNCTION----//
