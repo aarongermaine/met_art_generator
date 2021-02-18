@@ -110,3 +110,9 @@ body {
   max-width: 200px;
   min-width: 150px;
 }
+
+#error {
+  color: lightyellow;
+  font-size:20px;
+  font-weight: bold;
+}
